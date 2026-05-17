@@ -1,0 +1,580 @@
+@prefix : <http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-23#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/gugafm11/ontologies/2026/familia> .
+
+<http://www.semanticweb.org/gugafm11/ontologies/2026/familia> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/familia#eProgenitorGrau2
+:eProgenitorGrau2 rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf :eAntepassadoDe .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/familia#temIrmao
+:temIrmao rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf :temRelacaoSangue ;
+          rdf:type owl:SymmetricProperty ,
+                   owl:TransitiveProperty ;
+          owl:propertyChainAxiom ( :temProgenitor
+                                   :eProgenitorDe
+                                 ) .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/familia#temPrimo
+:temPrimo rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf :temRelacaoSangue ;
+          rdf:type owl:SymmetricProperty ;
+          owl:propertyChainAxiom ( :temProgenitor
+                                   :temProgenitor
+                                   :eProgenitorDe
+                                   :eProgenitorDe
+                                 ) .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/familia#temRelacaoSangue
+:temRelacaoSangue rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf :temRelacao .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-23#eAntepassadoDe
+:eAntepassadoDe rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf :temRelacao ;
+                owl:inverseOf :temAntepassado .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-23#eMaeDe
+:eMaeDe rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf :eProgenitorDe ;
+        owl:inverseOf :temMae .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-23#ePaiDe
+:ePaiDe rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf :eProgenitorDe ;
+        owl:inverseOf :temPai .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-23#eProgenitorDe
+:eProgenitorDe rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf :eAntepassadoDe ;
+               owl:inverseOf :temProgenitor .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-23#temAntepassado
+:temAntepassado rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf :temRelacaoSangue ;
+                rdf:type owl:TransitiveProperty .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-23#temAvoF
+:temAvoF rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf :temProgenitorGrau2 ;
+         owl:propertyChainAxiom ( :temProgenitor
+                                  :temMae
+                                ) .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-23#temAvoM
+:temAvoM rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf :temProgenitorGrau2 ;
+         owl:propertyChainAxiom ( :temProgenitor
+                                  :temPai
+                                ) .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-23#temMae
+:temMae rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf :temProgenitor ;
+        rdfs:domain :Pessoa ;
+        rdfs:range :Mulher .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-23#temPai
+:temPai rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf :temProgenitor ;
+        rdfs:domain :Pessoa ;
+        rdfs:range :Homem .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-23#temProgenitor
+:temProgenitor rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf :temAntepassado ;
+               rdfs:domain :Pessoa ;
+               rdfs:range :Pessoa .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-23#temProgenitorGrau2
+:temProgenitorGrau2 rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf :temAntepassado ;
+                    owl:propertyChainAxiom ( :temProgenitorGrau2
+                                             :eProgenitorGrau2
+                                           ) .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-23#temRelacao
+:temRelacao rdf:type owl:ObjectProperty ,
+                     owl:SymmetricProperty .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-23#temSexo
+:temSexo rdf:type owl:ObjectProperty ,
+                  owl:FunctionalProperty ;
+         rdfs:domain :Pessoa ;
+         rdfs:range :Sexo .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/familia#AntePassadoFem
+:AntePassadoFem rdf:type owl:Class ;
+                owl:equivalentClass [ owl:intersectionOf ( :Antepassado
+                                                           :Mulher
+                                                         ) ;
+                                      rdf:type owl:Class
+                                    ] .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/familia#Antepassado
+:Antepassado rdf:type owl:Class ;
+             owl:equivalentClass [ owl:intersectionOf ( :Pessoa
+                                                        [ rdf:type owl:Restriction ;
+                                                          owl:onProperty :eAntepassadoDe ;
+                                                          owl:someValuesFrom :Pessoa
+                                                        ]
+                                                      ) ;
+                                   rdf:type owl:Class
+                                 ] .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/familia#AntepassadoMasc
+:AntepassadoMasc rdf:type owl:Class ;
+                 owl:equivalentClass [ owl:intersectionOf ( :Antepassado
+                                                            :Homem
+                                                          ) ;
+                                       rdf:type owl:Class
+                                     ] .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/familia#Descendente
+:Descendente rdf:type owl:Class ;
+             owl:equivalentClass [ owl:intersectionOf ( :Pessoa
+                                                        [ rdf:type owl:Restriction ;
+                                                          owl:onProperty :temAntepassado ;
+                                                          owl:someValuesFrom :Pessoa
+                                                        ]
+                                                      ) ;
+                                   rdf:type owl:Class
+                                 ] .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/familia#DescendenteFem
+:DescendenteFem rdf:type owl:Class ;
+                owl:equivalentClass [ owl:intersectionOf ( :Descendente
+                                                           :Mulher
+                                                         ) ;
+                                      rdf:type owl:Class
+                                    ] .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/familia#DescendenteMasc
+:DescendenteMasc rdf:type owl:Class ;
+                 owl:equivalentClass [ owl:intersectionOf ( :Descendente
+                                                            :Homem
+                                                          ) ;
+                                       rdf:type owl:Class
+                                     ] .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-23#DominioFamiliar
+:DominioFamiliar rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-23#Feminio
+:Feminio rdf:type owl:Class ;
+         rdfs:subClassOf :Sexo ;
+         owl:disjointWith :Masculino .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-23#Homem
+:Homem rdf:type owl:Class ;
+       rdfs:subClassOf :Pessoa ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :temSexo ;
+                         owl:someValuesFrom :Masculino
+                       ] ;
+       owl:disjointWith :Mulher .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-23#Masculino
+:Masculino rdf:type owl:Class ;
+           rdfs:subClassOf :Sexo .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-23#Mulher
+:Mulher rdf:type owl:Class ;
+        rdfs:subClassOf :Pessoa ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :temSexo ;
+                          owl:someValuesFrom :Feminio
+                        ] .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-23#Pessoa
+:Pessoa rdf:type owl:Class ;
+        rdfs:subClassOf :DominioFamiliar ,
+                        [ rdf:type owl:Class ;
+                          owl:unionOf ( :Homem
+                                        :Mulher
+                                      )
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :temMae ;
+                          owl:someValuesFrom :Mulher
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :temPai ;
+                          owl:someValuesFrom :Homem
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :temSexo ;
+                          owl:someValuesFrom :Sexo
+                        ] ;
+        owl:disjointWith :Sexo .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-23#Sexo
+:Sexo rdf:type owl:Class ;
+      rdfs:subClassOf :DominioFamiliar ,
+                      [ rdf:type owl:Class ;
+                        owl:unionOf ( :Feminio
+                                      :Masculino
+                                    )
+                      ] .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-23#Abilio_da_Silva_Ramalho
+:Abilio_da_Silva_Ramalho rdf:type owl:NamedIndividual ;
+                         :temMae :Custodia_Azevedo_1867 ;
+                         :temPai :Manuel_da_Silva_Ramalho_1866 .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-23#Albina_Esteves_de_Araujo_1910
+:Albina_Esteves_de_Araujo_1910 rdf:type owl:NamedIndividual ;
+                               :temMae :Maria_Araujo_1884 ;
+                               :temPai :Henrique_Luiz_de_Araujo_1867 .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-23#Ana_Margarida_Ribeiro_Leite_1980
+:Ana_Margarida_Ribeiro_Leite_1980 rdf:type owl:NamedIndividual ;
+                                  :temMae :Maria_Margarida_Ribeiro_1954 ;
+                                  :temPai :Rui_Alberto_Araujo_Leite_1948 .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-23#Ana_da_Silva_Ramalho
+:Ana_da_Silva_Ramalho rdf:type owl:NamedIndividual ;
+                      :temMae :Custodia_Azevedo_1867 ;
+                      :temPai :Manuel_da_Silva_Ramalho_1866 .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-23#Antonio_da_Silva_Ramalho
+:Antonio_da_Silva_Ramalho rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-23#Antonio_da_Silva_Ramalho_1904
+:Antonio_da_Silva_Ramalho_1904 rdf:type owl:NamedIndividual ;
+                               :temMae :Custodia_Azevedo_1867 ;
+                               :temPai :Manuel_da_Silva_Ramalho_1866 .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-23#Arminda_da_Silva_Ramalho
+:Arminda_da_Silva_Ramalho rdf:type owl:NamedIndividual ;
+                          :temMae :Custodia_Azevedo_1867 ;
+                          :temPai :Manuel_da_Silva_Ramalho_1866 .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-23#Christina_Rosa_Silva_Santos_1879
+:Christina_Rosa_Silva_Santos_1879 rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-23#Custodia_Azevedo_1867
+:Custodia_Azevedo_1867 rdf:type owl:NamedIndividual ;
+                       :temMae :Maria_Gonçalves_de_Azevedo ;
+                       :temPai :Jose_Francisco_Ramos_Mouco .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-23#Domingos_Couto_Leite
+:Domingos_Couto_Leite rdf:type owl:NamedIndividual ;
+                      :temMae :Flora_Castilho_do_Couto_Leite ;
+                      :temPai :Marçal_da_Costa_Leite .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-23#Emília_Esteves
+:Emília_Esteves rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-23#Emília_Esteves_de_Araujo_1908
+:Emília_Esteves_de_Araujo_1908 rdf:type owl:NamedIndividual ;
+                               :temMae :Maria_Araujo_1884 ;
+                               :temPai :Henrique_Luiz_de_Araujo_1867 .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-23#Ezequiel_da_Silva_Ramalho
+:Ezequiel_da_Silva_Ramalho rdf:type owl:NamedIndividual ;
+                           :temMae :Custodia_Azevedo_1867 ;
+                           :temPai :Manuel_da_Silva_Ramalho_1866 .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-23#Filomena_Esteves_de_Araujo_1927
+:Filomena_Esteves_de_Araujo_1927 rdf:type owl:NamedIndividual ;
+                                 :temMae :Maria_Araujo_1884 ;
+                                 :temPai :Henrique_Luiz_de_Araujo_1867 .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-23#Flora_Castilho_do_Couto_Leite
+:Flora_Castilho_do_Couto_Leite rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-23#Florinda_Alves_dos_Santos
+:Florinda_Alves_dos_Santos rdf:type owl:NamedIndividual ;
+                           :temMae :Christina_Rosa_Silva_Santos_1879 ;
+                           :temPai :Joze_da_Silva_Santos_1879 .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-23#Generosa_da_Silva_Ramalho
+:Generosa_da_Silva_Ramalho rdf:type owl:NamedIndividual ;
+                           :temMae :Custodia_Azevedo_1867 ;
+                           :temPai :Manuel_da_Silva_Ramalho_1866 .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-23#Gilberto_Couto_Leite
+:Gilberto_Couto_Leite rdf:type owl:NamedIndividual ;
+                      :temMae :Flora_Castilho_do_Couto_Leite ;
+                      :temPai :Marçal_da_Costa_Leite .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-23#Helena_Couto_Leite
+:Helena_Couto_Leite rdf:type owl:NamedIndividual ;
+                    :temMae :Flora_Castilho_do_Couto_Leite ;
+                    :temPai :Marçal_da_Costa_Leite .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-23#Henrique_Luiz_de_Araujo_1867
+:Henrique_Luiz_de_Araujo_1867 rdf:type owl:NamedIndividual ;
+                              :temMae :Maria_das_Dores_Fernandes_de_Brito ;
+                              :temPai :Jose_Emílio_de_Araujo .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-23#Henrique_Luís_Esteves_de_Araujo_1924
+:Henrique_Luís_Esteves_de_Araujo_1924 rdf:type owl:NamedIndividual ;
+                                      :temMae :Maria_Araujo_1884 ;
+                                      :temPai :Henrique_Luiz_de_Araujo_1867 .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-23#Henrique_Marçal_Araujo_Leite_1943
+:Henrique_Marçal_Araujo_Leite_1943 rdf:type owl:NamedIndividual ;
+                                   :temMae :Maria_Esteves_de_Araujo_1912 ;
+                                   :temPai :Marçal_Aristides_Costa_Leite_1909 .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-23#Henrique_Miguel_Cabrita_de_Araujo_Leite_1971
+:Henrique_Miguel_Cabrita_de_Araujo_Leite_1971 rdf:type owl:NamedIndividual ;
+                                              :temMae :Maria_Otília_Araujo_Leite_1944 ;
+                                              :temPai :Henrique_Marçal_Araujo_Leite_1943 .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-23#Ilda_dos_Santos_Ramalho_1949
+:Ilda_dos_Santos_Ramalho_1949 rdf:type owl:NamedIndividual ;
+                              :temMae :Maria_Alves_dos_Santos_1906 ;
+                              :temPai :Antonio_da_Silva_Ramalho_1904 .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-23#Isabel_Maria_Cabrita_de_Araujo_Leite_1971
+:Isabel_Maria_Cabrita_de_Araujo_Leite_1971 rdf:type owl:NamedIndividual ;
+                                           :temMae :Maria_Otília_Araujo_Leite_1944 ;
+                                           :temPai :Henrique_Marçal_Araujo_Leite_1943 .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-23#Jose_Carlos_Leite_Ramalho_1967
+:Jose_Carlos_Leite_Ramalho_1967 rdf:type owl:NamedIndividual ;
+                                :temMae :Maria_Flora_Araujo_Leite_1941 ;
+                                :temPai :Jose_dos_Santos_Ramalho_1942 .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-23#Jose_Emílio_Esteves_de_Araujo_1916
+:Jose_Emílio_Esteves_de_Araujo_1916 rdf:type owl:NamedIndividual ;
+                                    :temMae :Maria_Araujo_1884 ;
+                                    :temPai :Henrique_Luiz_de_Araujo_1867 .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-23#Jose_Emílio_de_Araujo
+:Jose_Emílio_de_Araujo rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-23#Jose_Francisco_Ramos_Mouco
+:Jose_Francisco_Ramos_Mouco rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-23#Jose_Maria_Esteves
+:Jose_Maria_Esteves rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-23#Jose_dos_Santos_Ramalho_1942
+:Jose_dos_Santos_Ramalho_1942 rdf:type owl:NamedIndividual ;
+                              :temMae :Maria_Alves_dos_Santos_1906 ;
+                              :temPai :Antonio_da_Silva_Ramalho_1904 .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-23#José_dos_Santos_Ramalho_1942
+:José_dos_Santos_Ramalho_1942 rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-23#Joze_da_Silva_Santos_1879
+:Joze_da_Silva_Santos_1879 rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-23#João_Bernardo_Couto_Leite_1916
+:João_Bernardo_Couto_Leite_1916 rdf:type owl:NamedIndividual ;
+                                :temMae :Flora_Castilho_do_Couto_Leite ;
+                                :temPai :Marçal_da_Costa_Leite .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-23#Luís_Esteves_de_Araujo_1918
+:Luís_Esteves_de_Araujo_1918 rdf:type owl:NamedIndividual ;
+                             :temMae :Maria_Araujo_1884 ;
+                             :temPai :Henrique_Luiz_de_Araujo_1867 .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-23#Manuel_Carlos_dos_Santos_Ramalho
+:Manuel_Carlos_dos_Santos_Ramalho rdf:type owl:NamedIndividual ;
+                                  :temMae :Maria_Alves_dos_Santos_1906 ;
+                                  :temPai :Antonio_da_Silva_Ramalho_1904 .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-23#Manuel_Fernando_dos_Santos_Ramalho
+:Manuel_Fernando_dos_Santos_Ramalho rdf:type owl:NamedIndividual ;
+                                    :temMae :Maria_Alves_dos_Santos_1906 ;
+                                    :temPai :Antonio_da_Silva_Ramalho_1904 .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-23#Manuel_da_Silva_Ramalho_1866
+:Manuel_da_Silva_Ramalho_1866 rdf:type owl:NamedIndividual ;
+                              :temMae :Maria_Dias_dos_Reis ;
+                              :temPai :Antonio_da_Silva_Ramalho .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-23#Maria_Alves_dos_Santos_1906
+:Maria_Alves_dos_Santos_1906 rdf:type owl:NamedIndividual ;
+                             :temMae :Christina_Rosa_Silva_Santos_1879 ;
+                             :temPai :Joze_da_Silva_Santos_1879 .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-23#Maria_Araujo_1884
+:Maria_Araujo_1884 rdf:type owl:NamedIndividual ;
+                   :temMae :Emília_Esteves ;
+                   :temPai :Jose_Maria_Esteves .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-23#Maria_Dias_dos_Reis
+:Maria_Dias_dos_Reis rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-23#Maria_Esteves_de_Araujo_1912
+:Maria_Esteves_de_Araujo_1912 rdf:type owl:NamedIndividual ;
+                              :temMae :Maria_Araujo_1884 ;
+                              :temPai :Henrique_Luiz_de_Araujo_1867 .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-23#Maria_Flora_Araujo_Leite_1941
+:Maria_Flora_Araujo_Leite_1941 rdf:type owl:NamedIndividual ;
+                               :temMae :Maria_Esteves_de_Araujo_1912 ;
+                               :temPai :Marçal_Aristides_Costa_Leite_1909 .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-23#Maria_Flora_dos_Santos_Ramalho
+:Maria_Flora_dos_Santos_Ramalho rdf:type owl:NamedIndividual ;
+                                :temMae :Maria_Alves_dos_Santos_1906 ;
+                                :temPai :Antonio_da_Silva_Ramalho_1904 .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-23#Maria_Gonçalves_de_Azevedo
+:Maria_Gonçalves_de_Azevedo rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-23#Maria_Helena_Leite_Ramalho_1968
+:Maria_Helena_Leite_Ramalho_1968 rdf:type owl:NamedIndividual ;
+                                 :temMae :Maria_Flora_Araujo_Leite_1941 ;
+                                 :temPai :José_dos_Santos_Ramalho_1942 .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-23#Maria_Margarida_Ribeiro_1954
+:Maria_Margarida_Ribeiro_1954 rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-23#Maria_Otília_Araujo_Leite_1944
+:Maria_Otília_Araujo_Leite_1944 rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-23#Maria_das_Dores_Fernandes_de_Brito
+:Maria_das_Dores_Fernandes_de_Brito rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-23#Marçal_Aristides_Costa_Leite_1909
+:Marçal_Aristides_Costa_Leite_1909 rdf:type owl:NamedIndividual ;
+                                   :temMae :Flora_Castilho_do_Couto_Leite ;
+                                   :temPai :Marçal_da_Costa_Leite .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-23#Marçal_da_Costa_Leite
+:Marçal_da_Costa_Leite rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-23#Orlando_Couto_Leite
+:Orlando_Couto_Leite rdf:type owl:NamedIndividual ;
+                     :temMae :Flora_Castilho_do_Couto_Leite ;
+                     :temPai :Marçal_da_Costa_Leite .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-23#Rosa_Couto_Leite
+:Rosa_Couto_Leite rdf:type owl:NamedIndividual ;
+                  :temMae :Flora_Castilho_do_Couto_Leite ;
+                  :temPai :Marçal_da_Costa_Leite .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-23#Rui_Alberto_Araujo_Leite_1948
+:Rui_Alberto_Araujo_Leite_1948 rdf:type owl:NamedIndividual ;
+                               :temMae :Maria_Esteves_de_Araujo_1912 ;
+                               :temPai :Marçal_Aristides_Costa_Leite_1909 .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-23#Sara_Esteves_de_Araujo_1914
+:Sara_Esteves_de_Araujo_1914 rdf:type owl:NamedIndividual ;
+                             :temMae :Maria_Araujo_1884 ;
+                             :temPai :Henrique_Luiz_de_Araujo_1867 .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-23#Teresa_Maria_Ribeiro_Leite_1985
+:Teresa_Maria_Ribeiro_Leite_1985 rdf:type owl:NamedIndividual ;
+                                 :temMae :Maria_Margarida_Ribeiro_1954 ;
+                                 :temPai :Rui_Alberto_Araujo_Leite_1948 .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-23#Virginia_Esteves_de_Araujo_1921
+:Virginia_Esteves_de_Araujo_1921 rdf:type owl:NamedIndividual ;
+                                 :temMae :Maria_Araujo_1884 ;
+                                 :temPai :Henrique_Luiz_de_Araujo_1867 .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
