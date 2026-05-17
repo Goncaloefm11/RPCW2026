@@ -1,0 +1,56 @@
+PREFIX : <http://www.semanticweb.org/eduar_hkak6h8/ontologies/2026/mapa-virtual/>
+
+select ?ncidade where {
+	?c a :Cidade ;
+    	:temNome ?ncidade .
+} orderby ?
+
+-----------
+PREFIX : <http://www.semanticweb.org/eduar_hkak6h8/ontologies/2026/mapa-virtual/>
+
+select ?ndistrito (COUNT(?c) as ?nc) where {
+    ?d a :Distrito ;
+        :temNome ?ndistrito ;
+        :temCidade ?nc .
+} 
+    group by ?ndistrito 
+	order by ?ndistrito
+
+-------
+PREFIX : <http://www.semanticweb.org/eduar_hkak6h8/ontologies/2026/mapa-virtual/>
+
+select ?ncidade where {
+	?c a :Cidade ;
+        :temNome "Braga" .
+    {?l a :Ligacao ;
+        :temOrigem ?c ;
+        :temDestino/:temNome ?ncidade . }
+    union
+    {?l a :Ligacao ;
+		:temDestino ?c ;
+    	:temOrigem/:temNome ?ncidade .   
+    }
+} 
+------
+PREFIX : <http://www.semanticweb.org/eduar_hkak6h8/ontologies/2026/mapa-virtual/>
+construct {
+    ?cidadeOrigem :ligadaA ?cidadeDestino . 
+}
+where {
+    ?cidadeOrigem a :Cidade  . 
+    ?l a :Ligacao ;
+        :temOrigem ?cidadeOrigem;
+        :temDestino ?cidadeDestino . 
+}
+------
+PREFIX : <http://www.semanticweb.org/eduar_hkak6h8/ontologies/2026/mapa-virtual/>
+construct {
+    ?braga :ligacaoDireta ?cidadeDestino . 
+}
+where {
+    ?braga a :Cidade ;
+    	:temNome "Braga" . 
+    ?l a :Ligacao ;
+        :temOrigem ?braga ;
+        :temDestino ?cidadeDestino . 
+}
