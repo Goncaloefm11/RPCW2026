@@ -1,0 +1,14 @@
+SELECT DISTINCT ?nome ?pop ?paisLabel WHERE {
+  ?cidade a dbo:City ;
+          rdfs:label ?nome ;
+          dbo:populationTotal ?pop ;
+          dbo:country ?pais .
+ ?pais rdfs:label ?paisLabel .
+ ?pais dct:subject dbc:Countries_in_Europe .
+
+  FILTER (?pop > 1000000)
+  FILTER (lang(?nome) = "pt")
+  FILTER (lang(?paisLabel) = "pt")
+} 
+ORDER BY DESC(?pop)
+LIMIT 200

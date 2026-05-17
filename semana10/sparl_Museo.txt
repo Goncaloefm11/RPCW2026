@@ -1,0 +1,17 @@
+SELECT ?nomePais (COUNT(?museu) AS ?totalMuseu) WHERE {
+{?museu a dbo:Museum .}
+UNION 
+{?museu dct:subject dbc:Museums_by_country .}
+
+?museu dbo:location ?pais .
+
+?pais a dbo:Country .
+
+?pais rdfs:label ?nomePais .
+FILTER(lang(?nomePais) = "pt")
+ 
+}
+GROUP BY ?nomePais
+HAVING (COUNT(?museu) > 50)
+ORDER BY DESC(?totalMuseus)
+LIMIT 100

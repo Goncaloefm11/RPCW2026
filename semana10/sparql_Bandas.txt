@@ -1,0 +1,39 @@
+SELECT DISTINCT ?nomeBanda (GROUP_CONCAT(DISTINCT ?generoLabel; separator=", ") AS ?generos) WHERE {
+  ?banda a dbo:Band ;
+         rdfs:label ?nomeBanda ;
+         dbo:genre ?genero .
+  ?genero rdfs:label ?generoLabel .
+  FILTER (contains(lcase(?generoLabel), "rock"))
+  FILTER (lang(?nomeBanda) = "pt")
+  FILTER (lang(?generoLabel) = "pt")
+}
+GROUP BY ?nomeBanda
+ORDER BY ?nomeBanda
+LIMIT 100
+
+
+
+
+SELECT ?nomeBanda ?anoInicio (GROUP_CONCAT(DISTINCT ?nomeMembro; separator=", ") AS ?membros) WHERE {
+  ?banda a dbo:Band ;
+         rdfs:label ?nomeBanda ;
+         dbo:genre ?genero ;
+         dbo:bandMember ?membro .
+
+  ?membro rdfs:label ?nomeMembro .
+  
+  # Filtro para apanhar qualquer variação de Rock
+  ?genero rdfs:label ?generoLabel .
+  FILTER (contains(lcase(?generoLabel), "rock"))
+  
+  # Captura o ano de início de forma opcional
+  OPTIONAL { ?banda dbo:activeYearsStartYear ?anoInicio . }
+  
+  # Filtros de idioma para evitar duplicados internacionais
+  FILTER (lang(?nomeBanda) = "pt")
+  FILTER (lang(?nomeMembro) = "pt")
+  FILTER (lang(?generoLabel) = "pt")
+}
+GROUP BY ?nomeBanda ?anoInicio
+ORDER BY ?nomeBanda
+LIMIT 100

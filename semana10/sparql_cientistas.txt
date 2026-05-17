@@ -1,0 +1,14 @@
+SELECT DISTINCT ?cientista ?desc ?nome ?dataNasc ?localNasctexto ?instituicao ?area ?localTrabalhotexto WHERE {
+  ?cientista a dbo:Scientist .
+  ?cientista dbo:description ?desc .
+  ?cientista rdfs:label ?nome .
+  ?cientista dbo:birthDate ?dataNasc .
+  ?cientista dbo:birthPlace ?localNasc .
+  ?localNasc rdfs:label ?localNasctexto .
+  ?cientista dbo:institution ?instituicao .
+  ?cientista dbo:academicDiscipline ?area .
+  ?cientista dbp:workplaces ?localTrabalho .
+  ?localTrabalho rdfs:label ?localTrabalhotexto
+   FILTER (lang(?nome) = "en")
+   FILTER (lang(?desc) = "en")
+} LIMIT 20 

@@ -1,0 +1,19 @@
+1.
+SELECT DISTINCT ?cientista ?desc ?nome WHERE {
+  ?cientista a dbo:Scientist .
+  ?cientista dbo:description ?desc .
+  ?cientista rdfs:label ?nome
+   FILTER (lang(?nome) = "en")
+   FILTER (lang(?desc) = "en")
+}  LIMIT 20
+
+2.
+SELECT ?p ?o WHERE {
+  dbr:Albert_Einstein ?p ?o .
+}  LIMIT 20
+
+
+Nome
+Descricao
+DataNasc
+LocalNasc
