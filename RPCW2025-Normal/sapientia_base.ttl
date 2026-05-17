@@ -1,0 +1,87 @@
+@prefix : <http://rpcw.di.uminho.pt/2025/sapientia/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://rpcw.di.uminho.pt/2025/sapientia/> .
+
+<http://rpcw.di.uminho.pt/2025/sapientia> rdf:type owl:Ontology .
+
+### =================================================================
+### Classes
+### =================================================================
+
+:TipoDeConhecimento rdf:type owl:Class .
+:Disciplina rdf:type owl:Class .
+:Obra rdf:type owl:Class .
+:Mestre rdf:type owl:Class .
+:Aprendiz rdf:type owl:Class .
+:Conceito rdf:type owl:Class .
+:PeríodoHistorico rdf:type owl:Class .
+:Aplicação rdf:type owl:Class .
+
+### =================================================================
+### Object Properties
+### =================================================================
+
+:ensina rdf:type owl:ObjectProperty ;
+        rdfs:domain :Mestre ;
+        rdfs:range :Disciplina .
+
+:aprende rdf:type owl:ObjectProperty ;
+         rdfs:domain :Aprendiz ;
+         rdfs:range :Disciplina .
+
+:estáRelacionadoCom rdf:type owl:ObjectProperty ;
+                    rdfs:domain :Conceito ;
+                    rdfs:range :Conceito .
+
+:pertenceA rdf:type owl:ObjectProperty ;
+           rdfs:domain :Disciplina ;
+           rdfs:range :TipoDeConhecimento .
+
+:explica rdf:type owl:ObjectProperty ;
+         rdfs:domain :Obra ;
+         rdfs:range :Conceito .
+
+:foiEscritoPor rdf:type owl:ObjectProperty ;
+               rdfs:domain :Obra ;
+               rdfs:range :Mestre .
+
+:éEstudadoEm rdf:type owl:ObjectProperty ;
+             rdfs:domain :Conceito ;
+             rdfs:range :Disciplina .
+
+:surgeEm rdf:type owl:ObjectProperty ;
+         rdfs:domain :Conceito ;
+         rdfs:range :PeríodoHistorico .
+
+:temAplicaçãoEm rdf:type owl:ObjectProperty ;
+                rdfs:domain :Conceito ;
+                rdfs:range :Aplicação .
+
+# Novas propriedades pedidas na parte de inferência
+:estudaCom rdf:type owl:ObjectProperty ;
+           rdfs:domain :Aprendiz ;
+           rdfs:range :Mestre .
+
+:dáBasesPara rdf:type owl:ObjectProperty ;
+             rdfs:domain :Disciplina ;
+             rdfs:range :Aplicação .
+
+### =================================================================
+### Data Properties
+### =================================================================
+
+:nome rdf:type owl:DatatypeProperty ;
+      rdfs:domain [ owl:unionOf (:TipoDeConhecimento :Disciplina :Mestre :Aprendiz :Conceito :PeríodoHistorico :Aplicação) ] ;
+      rdfs:range xsd:string .
+
+:idade rdf:type owl:DatatypeProperty ;
+       rdfs:domain :Aprendiz ;
+       rdfs:range xsd:integer .
+
+:titulo rdf:type owl:DatatypeProperty ;
+        rdfs:domain :Obra ;
+        rdfs:range xsd:string .

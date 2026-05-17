@@ -1,0 +1,605 @@
+@prefix : <http://rpcw.di.uminho.pt/2025/sapientia/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://rpcw.di.uminho.pt/2025/sapientia> a owl:Ontology .
+
+:a_relatividade_especial_e_geral a :Obra,
+        owl:NamedIndividual ;
+    :explica :espacotempo,
+        :gravitacao,
+        :relatividade ;
+    :foiEscritoPor :albert_einstein ;
+    :titulo "A Relatividade Especial e Geral"^^xsd:string .
+
+:aprende a owl:ObjectProperty ;
+    rdfs:domain :Aprendiz ;
+    rdfs:range :Disciplina .
+
+:beatriz_santos a :Aprendiz,
+        owl:NamedIndividual ;
+    :aprende :algebra_linear,
+        :logica,
+        :programacao_funcional ;
+    :idade 21 ;
+    :nome "Beatriz Santos"^^xsd:string .
+
+:carlos_antunes a :Aprendiz,
+        owl:NamedIndividual ;
+    :aprende :filosofia,
+        :sociologia ;
+    :idade 38 ;
+    :nome "Carlos Antunes"^^xsd:string .
+
+:diana_rocha a :Aprendiz,
+        owl:NamedIndividual ;
+    :aprende :algebra_linear,
+        :analise_matematica ;
+    :idade 47 ;
+    :nome "Diana Rocha"^^xsd:string .
+
+:dáBasesPara a owl:ObjectProperty ;
+    rdfs:domain :Disciplina ;
+    rdfs:range :Aplicação .
+
+:eduardo_lima a :Aprendiz,
+        owl:NamedIndividual ;
+    :aprende :etica,
+        :filosofia ;
+    :idade 72 ;
+    :nome "Eduardo Lima"^^xsd:string .
+
+:ensina a owl:ObjectProperty ;
+    rdfs:domain :Mestre ;
+    rdfs:range :Disciplina .
+
+:epistemologia a :Conceito,
+        owl:NamedIndividual ;
+    :estáRelacionadoCom :empirismo,
+        :etica,
+        :metafisica ;
+    :nome "Epistemologia"^^xsd:string ;
+    :surgeEm :idade_antiga ;
+    :temAplicaçãoEm :educacao,
+        :filosofia_da_ciencia,
+        :investigacao_cientifica ;
+    :éEstudadoEm :filosofia .
+
+:estudaCom a owl:ObjectProperty ;
+    rdfs:domain :Aprendiz ;
+    rdfs:range :Mestre .
+
+:estáRelacionadoCom a owl:ObjectProperty ;
+    rdfs:domain :Conceito ;
+    rdfs:range :Conceito .
+
+:etica_a_nicomaco a :Obra,
+        owl:NamedIndividual ;
+    :explica :etica,
+        :felicidade,
+        :virtude ;
+    :foiEscritoPor :aristoteles ;
+    :titulo "Ética a Nicômaco"^^xsd:string .
+
+:explica a owl:ObjectProperty ;
+    rdfs:domain :Obra ;
+    rdfs:range :Conceito .
+
+:filosofia_da_mente a :Conceito,
+        owl:NamedIndividual ;
+    :nome "Filosofia da Mente"^^xsd:string ;
+    :éEstudadoEm :filosofia .
+
+:foiEscritoPor a owl:ObjectProperty ;
+    rdfs:domain :Obra ;
+    rdfs:range :Mestre .
+
+:francisca_mendes a :Aprendiz,
+        owl:NamedIndividual ;
+    :aprende :logica,
+        :sociologia ;
+    :idade 80 ;
+    :nome "Francisca Mendes"^^xsd:string .
+
+:godel_escher_bach_an_eternal_golden_braid a :Obra,
+        owl:NamedIndividual ;
+    :explica :recursividade,
+        :teoria_da_computacao ;
+    :foiEscritoPor :ada_lovelace ;
+    :titulo "Gödel, Escher, Bach: An Eternal Golden Braid"^^xsd:string .
+
+:idade a owl:DatatypeProperty ;
+    rdfs:domain :Aprendiz ;
+    rdfs:range xsd:integer .
+
+:nome a owl:DatatypeProperty ;
+    rdfs:domain [ owl:unionOf ( :TipoDeConhecimento :Disciplina :Mestre :Aprendiz :Conceito :PeríodoHistorico :Aplicação ) ] ;
+    rdfs:range xsd:string .
+
+:o_capital a :Obra,
+        owl:NamedIndividual ;
+    :explica :ciencias_sociais,
+        :positivismo ;
+    :foiEscritoPor :karl_marx ;
+    :titulo "O Capital"^^xsd:string .
+
+:pertenceA a owl:ObjectProperty ;
+    rdfs:domain :Disciplina ;
+    rdfs:range :TipoDeConhecimento .
+
+:philosophiae_naturalis_principia_mathematica a :Obra,
+        owl:NamedIndividual ;
+    :explica :calculo,
+        :gravitacao,
+        :mecanica_classica ;
+    :foiEscritoPor :isaac_newton ;
+    :titulo "Philosophiae Naturalis Principia Mathematica"^^xsd:string .
+
+:principia_mathematica a :Obra,
+        owl:NamedIndividual ;
+    :explica :algebra_linear,
+        :logica_formal,
+        :logica_matematica ;
+    :foiEscritoPor :gottlob_frege ;
+    :titulo "Principia Mathematica"^^xsd:string .
+
+:savio_arinto a :Aprendiz,
+        owl:NamedIndividual ;
+    :aprende :filosofia,
+        :fisica_teorica,
+        :logica ;
+    :idade 63 ;
+    :nome "Sávio Arinto"^^xsd:string .
+
+:silogismo a :Conceito,
+        owl:NamedIndividual ;
+    :estáRelacionadoCom :filosofia_grega,
+        :logica_formal,
+        :retorica ;
+    :nome "Silogismo"^^xsd:string ;
+    :surgeEm :idade_antiga ;
+    :temAplicaçãoEm :argumentacao_juridica,
+        :educacao,
+        :filosofia ;
+    :éEstudadoEm :logica .
+
+:surgeEm a owl:ObjectProperty ;
+    rdfs:domain :Conceito ;
+    rdfs:range :PeríodoHistorico .
+
+:temAplicaçãoEm a owl:ObjectProperty ;
+    rdfs:domain :Conceito ;
+    rdfs:range :Aplicação .
+
+:titulo a owl:DatatypeProperty ;
+    rdfs:domain :Obra ;
+    rdfs:range xsd:string .
+
+:éEstudadoEm a owl:ObjectProperty ;
+    rdfs:domain :Conceito ;
+    rdfs:range :Disciplina .
+
+:abstracao a :Conceito,
+        owl:NamedIndividual ;
+    :nome "Abstração"^^xsd:string .
+
+:ada_lovelace a :Mestre,
+        owl:NamedIndividual ;
+    :ensina :logica,
+        :programacao_funcional ;
+    :nome "Ada Lovelace"^^xsd:string .
+
+:albert_einstein a :Mestre,
+        owl:NamedIndividual ;
+    :ensina :fisica_teorica ;
+    :nome "Albert Einstein"^^xsd:string .
+
+:algebra a :Aplicação,
+        owl:NamedIndividual ;
+    :nome "Álgebra"^^xsd:string .
+
+:algoritmos a :Conceito,
+        owl:NamedIndividual ;
+    :nome "Algoritmos"^^xsd:string .
+
+:antropologia a :Conceito,
+        owl:NamedIndividual ;
+    :nome "Antropologia"^^xsd:string .
+
+:argumentacao_juridica a :Aplicação,
+        owl:NamedIndividual ;
+    :nome "Argumentação Jurídica"^^xsd:string .
+
+:aristoteles a :Mestre,
+        owl:NamedIndividual ;
+    :ensina :etica,
+        :filosofia,
+        :logica ;
+    :nome "Aristóteles"^^xsd:string .
+
+:arquitetura a :Aplicação,
+        owl:NamedIndividual ;
+    :nome "Arquitetura"^^xsd:string .
+
+:astrofisica a :Aplicação,
+        owl:NamedIndividual ;
+    :nome "Astrofísica"^^xsd:string .
+
+:balistica a :Aplicação,
+        owl:NamedIndividual ;
+    :nome "Balística"^^xsd:string .
+
+:calculo_diferencial a :Conceito,
+        owl:NamedIndividual ;
+    :nome "Cálculo Diferencial"^^xsd:string .
+
+:ciencia_politica a :Aplicação,
+        owl:NamedIndividual ;
+    :nome "Ciência Política"^^xsd:string .
+
+:ciencias_da_natureza a :TipoDeConhecimento,
+        owl:NamedIndividual ;
+    :nome "Ciências da Natureza"^^xsd:string .
+
+:composicao a :Conceito,
+        owl:NamedIndividual ;
+    :estáRelacionadoCom :abstracao,
+        :funcao,
+        :modularidade ;
+    :nome "Composição"^^xsd:string ;
+    :surgeEm :seculo_xvii ;
+    :temAplicaçãoEm :algebra,
+        :analise_matematica,
+        :programacao_funcional ;
+    :éEstudadoEm :analise_matematica,
+        :programacao_funcional .
+
+:computacao_grafica a :Aplicação,
+        owl:NamedIndividual ;
+    :nome "Computação Gráfica"^^xsd:string .
+
+:data_science a :Aplicação,
+        owl:NamedIndividual ;
+    :nome "Data Science"^^xsd:string .
+
+:empirismo a :Conceito,
+        owl:NamedIndividual ;
+    :nome "Empirismo"^^xsd:string .
+
+:engenharia_mecanica a :Aplicação,
+        owl:NamedIndividual ;
+    :nome "Engenharia Mecânica"^^xsd:string .
+
+:espacos_vetoriais a :Conceito,
+        owl:NamedIndividual ;
+    :nome "Espaços Vetoriais"^^xsd:string ;
+    :éEstudadoEm :algebra_linear .
+
+:felicidade a :Conceito,
+        owl:NamedIndividual ;
+    :nome "Felicidade"^^xsd:string .
+
+:filosofia_da_ciencia a :Aplicação,
+        owl:NamedIndividual ;
+    :nome "Filosofia da Ciência"^^xsd:string .
+
+:filosofia_grega a :Conceito,
+        owl:NamedIndividual ;
+    :nome "Filosofia Grega"^^xsd:string .
+
+:fisica a :Aplicação,
+        owl:NamedIndividual ;
+    :nome "Física"^^xsd:string .
+
+:fisica_experimental a :Conceito,
+        owl:NamedIndividual ;
+    :nome "Física Experimental"^^xsd:string .
+
+:fisica_quantica a :Conceito,
+        owl:NamedIndividual ;
+    :nome "Física Quântica"^^xsd:string .
+
+:funcao a :Conceito,
+        owl:NamedIndividual ;
+    :estáRelacionadoCom :calculo_diferencial,
+        :composicao,
+        :mapeamento ;
+    :nome "Função"^^xsd:string ;
+    :surgeEm :seculo_xvii ;
+    :temAplicaçãoEm :engenharia,
+        :fisica,
+        :matematica ;
+    :éEstudadoEm :analise_matematica,
+        :programacao_funcional .
+
+:gottlob_frege a :Mestre,
+        owl:NamedIndividual ;
+    :ensina :algebra_linear,
+        :logica ;
+    :nome "Gottlob Frege"^^xsd:string .
+
+:historia a :Aplicação,
+        owl:NamedIndividual ;
+    :nome "História"^^xsd:string .
+
+:inducao_matematica a :Conceito,
+        owl:NamedIndividual ;
+    :nome "Indução Matemática"^^xsd:string .
+
+:investigacao_cientifica a :Aplicação,
+        owl:NamedIndividual ;
+    :nome "Investigação Científica"^^xsd:string .
+
+:isaac_newton a :Mestre,
+        owl:NamedIndividual ;
+    :ensina :analise_matematica,
+        :fisica_teorica ;
+    :nome "Isaac Newton"^^xsd:string .
+
+:karl_marx a :Mestre,
+        owl:NamedIndividual ;
+    :ensina :sociologia ;
+    :nome "Karl Marx"^^xsd:string .
+
+:linguistica a :Aplicação,
+        owl:NamedIndividual ;
+    :nome "Linguística"^^xsd:string .
+
+:mapeamento a :Conceito,
+        owl:NamedIndividual ;
+    :nome "Mapeamento"^^xsd:string .
+
+:matrizes a :Conceito,
+        owl:NamedIndividual ;
+    :nome "Matrizes"^^xsd:string ;
+    :éEstudadoEm :algebra_linear .
+
+:mecanica_classica a :Conceito,
+        owl:NamedIndividual ;
+    :estáRelacionadoCom :calculo,
+        :fisica_experimental,
+        :gravitacao ;
+    :nome "Mecânica Clássica"^^xsd:string ;
+    :surgeEm :seculo_xvii ;
+    :temAplicaçãoEm :arquitetura,
+        :balistica,
+        :engenharia_mecanica ;
+    :éEstudadoEm :fisica_teorica .
+
+:metafisica a :Conceito,
+        owl:NamedIndividual ;
+    :nome "Metafísica"^^xsd:string ;
+    :éEstudadoEm :filosofia .
+
+:metodo_cientifico a :Conceito,
+        owl:NamedIndividual ;
+    :nome "Método Científico"^^xsd:string .
+
+:modularidade a :Conceito,
+        owl:NamedIndividual ;
+    :nome "Modularidade"^^xsd:string .
+
+:navegacao_por_satelite a :Aplicação,
+        owl:NamedIndividual ;
+    :nome "Navegação por Satélite"^^xsd:string .
+
+:recursividade a :Conceito,
+        owl:NamedIndividual ;
+    :estáRelacionadoCom :algoritmos,
+        :inducao_matematica,
+        :programacao_funcional ;
+    :nome "Recursividade"^^xsd:string ;
+    :surgeEm :seculo_xx ;
+    :temAplicaçãoEm :linguistica,
+        :matematica,
+        :programacao ;
+    :éEstudadoEm :programacao_funcional .
+
+:relatividade a :Conceito,
+        owl:NamedIndividual ;
+    :estáRelacionadoCom :espacotempo,
+        :fisica_quantica,
+        :gravitacao ;
+    :nome "Relatividade"^^xsd:string ;
+    :surgeEm :seculo_xx ;
+    :temAplicaçãoEm :astrofisica,
+        :fisica_teorica,
+        :navegacao_por_satelite ;
+    :éEstudadoEm :fisica_teorica .
+
+:retorica a :Conceito,
+        owl:NamedIndividual ;
+    :nome "Retórica"^^xsd:string .
+
+:tecnologia a :TipoDeConhecimento,
+        owl:NamedIndividual ;
+    :nome "Tecnologia"^^xsd:string .
+
+:virtude a :Conceito,
+        owl:NamedIndividual ;
+    :nome "Virtude"^^xsd:string ;
+    :éEstudadoEm :etica .
+
+:ciencias_sociais a :Conceito,
+        :TipoDeConhecimento,
+        owl:NamedIndividual ;
+    :estáRelacionadoCom :antropologia,
+        :metodo_cientifico,
+        :positivismo ;
+    :nome "Ciências Sociais"^^xsd:string ;
+    :surgeEm :seculo_xix ;
+    :temAplicaçãoEm :ciencia_politica,
+        :historia,
+        :sociologia ;
+    :éEstudadoEm :sociologia .
+
+:educacao a :Aplicação,
+        owl:NamedIndividual ;
+    :nome "Educação"^^xsd:string .
+
+:engenharia a :Aplicação,
+        owl:NamedIndividual ;
+    :nome "Engenharia"^^xsd:string .
+
+:espacotempo a :Conceito,
+        owl:NamedIndividual ;
+    :nome "Espaço-Tempo"^^xsd:string ;
+    :éEstudadoEm :fisica_teorica .
+
+:inteligencia_artificial a :Aplicação,
+        :Conceito,
+        owl:NamedIndividual ;
+    :nome "Inteligência Artificial"^^xsd:string .
+
+:logica_formal a :Conceito,
+        owl:NamedIndividual ;
+    :estáRelacionadoCom :inteligencia_artificial,
+        :logica_matematica,
+        :teoria_da_computacao ;
+    :nome "Lógica Formal"^^xsd:string ;
+    :surgeEm :idade_antiga ;
+    :temAplicaçãoEm :inteligencia_artificial,
+        :matematica,
+        :programacao ;
+    :éEstudadoEm :logica .
+
+:logica_matematica a :Conceito,
+        owl:NamedIndividual ;
+    :nome "Lógica Matemática"^^xsd:string .
+
+:positivismo a :Conceito,
+        owl:NamedIndividual ;
+    :nome "Positivismo"^^xsd:string ;
+    :éEstudadoEm :sociologia .
+
+:programacao a :Aplicação,
+        owl:NamedIndividual ;
+    :nome "Programação"^^xsd:string .
+
+:seculo_xix a :PeríodoHistorico,
+        owl:NamedIndividual ;
+    :nome "Século XIX"^^xsd:string .
+
+:seculo_xx a :PeríodoHistorico,
+        owl:NamedIndividual ;
+    :nome "Século XX"^^xsd:string .
+
+:teoria_da_computacao a :Conceito,
+        owl:NamedIndividual ;
+    :nome "Teoria da Computação"^^xsd:string .
+
+:calculo a :Conceito,
+        owl:NamedIndividual ;
+    :nome "Cálculo"^^xsd:string ;
+    :éEstudadoEm :analise_matematica .
+
+:idade_antiga a :PeríodoHistorico,
+        owl:NamedIndividual ;
+    :nome "Idade Antiga"^^xsd:string .
+
+:seculo_xvii a :PeríodoHistorico,
+        owl:NamedIndividual ;
+    :nome "Século XVII"^^xsd:string .
+
+:gravitacao a :Conceito,
+        owl:NamedIndividual ;
+    :nome "Gravitação"^^xsd:string .
+
+:humanidades a :TipoDeConhecimento,
+        owl:NamedIndividual ;
+    :nome "Humanidades"^^xsd:string .
+
+:ciencias_exatas a :TipoDeConhecimento,
+        owl:NamedIndividual ;
+    :nome "Ciências Exatas"^^xsd:string .
+
+:matematica a :Aplicação,
+        :TipoDeConhecimento,
+        owl:NamedIndividual ;
+    :nome "Matemática"^^xsd:string .
+
+:PeríodoHistorico a owl:Class .
+
+:analise_matematica a :Aplicação,
+        :Disciplina,
+        owl:NamedIndividual ;
+    :nome "Análise Matemática"^^xsd:string ;
+    :pertenceA :ciencias_exatas,
+        :matematica .
+
+:etica a :Conceito,
+        :Disciplina,
+        owl:NamedIndividual ;
+    :nome "Ética"^^xsd:string ;
+    :pertenceA :filosofia,
+        :humanidades ;
+    :éEstudadoEm :etica,
+        :filosofia .
+
+:sociologia a :Aplicação,
+        :Disciplina,
+        owl:NamedIndividual ;
+    :nome "Sociologia"^^xsd:string ;
+    :pertenceA :ciencias_sociais,
+        :humanidades .
+
+:algebra_linear a :Conceito,
+        :Disciplina,
+        owl:NamedIndividual ;
+    :estáRelacionadoCom :calculo,
+        :espacos_vetoriais,
+        :matrizes ;
+    :nome "Álgebra Linear"^^xsd:string ;
+    :pertenceA :ciencias_exatas,
+        :matematica ;
+    :surgeEm :seculo_xix ;
+    :temAplicaçãoEm :computacao_grafica,
+        :data_science,
+        :engenharia ;
+    :éEstudadoEm :algebra_linear .
+
+:fisica_teorica a :Aplicação,
+        :Disciplina,
+        owl:NamedIndividual ;
+    :nome "Física Teórica"^^xsd:string ;
+    :pertenceA :ciencias_da_natureza,
+        :ciencias_exatas .
+
+:programacao_funcional a :Aplicação,
+        :Conceito,
+        :Disciplina,
+        owl:NamedIndividual ;
+    :nome "Programação Funcional"^^xsd:string ;
+    :pertenceA :ciencias_exatas,
+        :tecnologia .
+
+:logica a :Disciplina,
+        owl:NamedIndividual ;
+    :nome "Lógica"^^xsd:string ;
+    :pertenceA :ciencias_exatas,
+        :humanidades .
+
+:Obra a owl:Class .
+
+:TipoDeConhecimento a owl:Class .
+
+:Aprendiz a owl:Class .
+
+:Mestre a owl:Class .
+
+:filosofia a :Aplicação,
+        :Disciplina,
+        :TipoDeConhecimento,
+        owl:NamedIndividual ;
+    :nome "Filosofia"^^xsd:string ;
+    :pertenceA :filosofia,
+        :humanidades .
+
+:Disciplina a owl:Class .
+
+:Aplicação a owl:Class .
+
+:Conceito a owl:Class .
+
