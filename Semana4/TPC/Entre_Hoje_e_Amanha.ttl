@@ -1,0 +1,207 @@
+@prefix : <http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-15#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-15> .
+
+<http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-15> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-15#existem_EM
+:existem_EM rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-15#gerida_POR
+:gerida_POR rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-15#ocorrem_Em
+:ocorrem_Em rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-15#pertencem_A
+:pertencem_A rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-15#refere
+:refere rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-15#requisitam
+:requisitam rdf:type owl:ObjectProperty ;
+            owl:propertyDisjointWith :sãoEscritos_POR .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-15#sãoEscritos_POR
+:sãoEscritos_POR rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-15#trabalha_EM
+:trabalha_EM rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-15#Agente
+:Agente rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-15#Autor
+:Autor rdf:type owl:Class ;
+       rdfs:subClassOf :Pessoa .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-15#Biblioteca
+:Biblioteca rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-15#Bibliotecário
+:Bibliotecário rdf:type owl:Class ;
+               rdfs:subClassOf :Pessoa ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :trabalha_EM ;
+                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                 owl:onClass :Biblioteca
+                               ] .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-15#Empréstimos
+:Empréstimos rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-15#EntidadeTemporal
+:EntidadeTemporal rdf:type owl:Class ;
+                  rdfs:subClassOf :Agente .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-15#EventoFuturo
+:EventoFuturo rdf:type owl:Class ;
+              rdfs:subClassOf :Eventos .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-15#EventoHistórico
+:EventoHistórico rdf:type owl:Class ;
+                 rdfs:subClassOf :Eventos .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-15#Eventos
+:Eventos rdf:type owl:Class ;
+         rdfs:subClassOf [ rdf:type owl:Restriction ;
+                           owl:onProperty :ocorrem_Em ;
+                           owl:someValuesFrom :LinhaTemporal
+                         ] .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-15#Leitor
+:Leitor rdf:type owl:Class ;
+        rdfs:subClassOf :Pessoa .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-15#LinhaAlternativa
+:LinhaAlternativa rdf:type owl:Class ;
+                  rdfs:subClassOf :LinhaTemporal .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-15#LinhaOriginal
+:LinhaOriginal rdf:type owl:Class ;
+               rdfs:subClassOf :LinhaTemporal .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-15#LinhaTemporal
+:LinhaTemporal rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-15#LivroFiccional
+:LivroFiccional rdf:type owl:Class ;
+                owl:equivalentClass [ rdf:type owl:Restriction ;
+                                      owl:onProperty :refere ;
+                                      owl:allValuesFrom :EventoFuturo
+                                    ] ;
+                rdfs:subClassOf :Livros ;
+                owl:disjointWith :LivroHistórico .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-15#LivroHistórico
+:LivroHistórico rdf:type owl:Class ;
+                owl:equivalentClass [ rdf:type owl:Restriction ;
+                                      owl:onProperty :refere ;
+                                      owl:allValuesFrom :EventoHistórico
+                                    ] ;
+                rdfs:subClassOf :Livros .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-15#LivroParadoxal
+:LivroParadoxal rdf:type owl:Class ;
+                rdfs:subClassOf :Livros .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-15#Livros
+:Livros rdf:type owl:Class ;
+        owl:equivalentClass [ rdf:type owl:Restriction ;
+                              owl:onProperty :existem_EM ;
+                              owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                              owl:onClass :LinhaTemporal
+                            ] ;
+        rdfs:subClassOf [ rdf:type owl:Restriction ;
+                          owl:onProperty :pertencem_A ;
+                          owl:someValuesFrom :Biblioteca
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :sãoEscritos_POR ;
+                          owl:someValuesFrom :Autor
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :existem_EM ;
+                          owl:allValuesFrom [ owl:intersectionOf ( :LinhaAlternativa
+                                                                   :LinhaOriginal
+                                                                 ) ;
+                                              rdf:type owl:Class
+                                            ]
+                        ] .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-15#Pessoa
+:Pessoa rdf:type owl:Class ;
+        rdfs:subClassOf :Agente ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :requisitam ;
+                          owl:someValuesFrom :Livros
+                        ] .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-15#Biblioteca_Entre_Ontem_e_Amanha
+:Biblioteca_Entre_Ontem_e_Amanha rdf:type owl:NamedIndividual ,
+                                          :Biblioteca .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-15#Cronos
+:Cronos rdf:type owl:NamedIndividual ,
+                 [ owl:intersectionOf ( :Autor
+                                        :Bibliotecário
+                                      ) ;
+                   rdf:type owl:Class
+                 ] .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-15#Linha_T1
+:Linha_T1 rdf:type owl:NamedIndividual ,
+                   :LinhaOriginal .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-15#Linha_TO
+:Linha_TO rdf:type owl:NamedIndividual ,
+                   :LinhaAlternativa .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

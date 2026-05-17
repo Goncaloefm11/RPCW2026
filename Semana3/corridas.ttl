@@ -1,0 +1,217 @@
+@prefix : <http://rpcw.di.uminho.pt/2024/corridas/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://rpcw.di.uminho.pt/2024/corridas/> .
+
+<http://rpcw.di.uminho.pt/2024/corridas> rdf:type owl:Ontology .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/elements/1.1/creator
+<http://purl.org/dc/elements/1.1/creator> rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://rpcw.di.uminho.pt/2024/corridas#temHobby
+:temHobby rdf:type owl:ObjectProperty ;
+          rdfs:domain :Corredor ;
+          rdfs:range :Hobby ;
+          <http://purl.org/dc/elements/1.1/creator> "josecarlosleiteramalho" .
+
+
+###  http://rpcw.di.uminho.pt/2024/corridas#temMorador
+:temMorador rdf:type owl:ObjectProperty ;
+            owl:inverseOf :vive ;
+            <http://purl.org/dc/elements/1.1/creator> "josecarlosleiteramalho" .
+
+
+###  http://rpcw.di.uminho.pt/2024/corridas#temTshirt
+:temTshirt rdf:type owl:ObjectProperty ;
+           rdfs:domain :Corredor ;
+           <http://purl.org/dc/elements/1.1/creator> "josecarlosleiteramalho" .
+
+
+###  http://rpcw.di.uminho.pt/2024/corridas#vive
+:vive rdf:type owl:ObjectProperty ;
+      rdfs:domain :Corredor ;
+      rdfs:range :Estado ;
+      <http://purl.org/dc/elements/1.1/creator> "josecarlosleiteramalho" .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://rpcw.di.uminho.pt/2024/corridas#idade
+:idade rdf:type owl:DatatypeProperty ;
+       rdfs:domain :Corredor ;
+       rdfs:range xsd:int ;
+       <http://purl.org/dc/elements/1.1/creator> "josecarlosleiteramalho" .
+
+
+###  http://rpcw.di.uminho.pt/2024/corridas#nome
+:nome rdf:type owl:DatatypeProperty ;
+      rdfs:domain :Corredor ;
+      rdfs:range xsd:string ;
+      <http://purl.org/dc/elements/1.1/creator> "josecarlosleiteramalho" .
+
+
+###  http://rpcw.di.uminho.pt/2024/corridas#número
+:número rdf:type owl:DatatypeProperty ;
+        rdfs:domain :Corredor ;
+        <http://purl.org/dc/elements/1.1/creator> "josecarlosleiteramalho" .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://rpcw.di.uminho.pt/2024/corridas#Corredor
+:Corredor rdf:type owl:Class ;
+          <http://purl.org/dc/elements/1.1/creator> "josecarlosleiteramalho" .
+
+
+###  http://rpcw.di.uminho.pt/2024/corridas#Estado
+:Estado rdf:type owl:Class ;
+        <http://purl.org/dc/elements/1.1/creator> "josecarlosleiteramalho" .
+
+
+###  http://rpcw.di.uminho.pt/2024/corridas#Hobby
+:Hobby rdf:type owl:Class ;
+       <http://purl.org/dc/elements/1.1/creator> "josecarlosleiteramalho" .
+
+
+###  http://rpcw.di.uminho.pt/2024/corridas#Tshirt
+:Tshirt rdf:type owl:Class ;
+        <http://purl.org/dc/elements/1.1/creator> "josecarlosleiteramalho" .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://rpcw.di.uminho.pt/2024/corridas#708
+<http://rpcw.di.uminho.pt/2024/corridas#708> rdf:type owl:NamedIndividual ,
+                                                      :Corredor ;
+                                             :temHobby :ler ;
+                                             :temTshirt :azul ;
+                                             :vive :Bahia ;
+                                             :idade "34"^^xsd:int ;
+                                             :nome "Edgar" ;
+                                             :número "708" .
+
+###  http://rpcw.di.uminho.pt/2024/corridas#Bahia
+:Bahia rdf:type owl:NamedIndividual ,
+                :Estado .
+
+
+###  http://rpcw.di.uminho.pt/2024/corridas#ler
+:ler rdf:type owl:NamedIndividual ,
+              :Hobby .
+
+
+###  http://rpcw.di.uminho.pt/2024/corridas#azul
+:azul rdf:type owl:NamedIndividual , :Tshirt .
+
+###  http://rpcw.di.uminho.pt/2024/corridas#963
+<http://rpcw.di.uminho.pt/2024/corridas#963> rdf:type owl:NamedIndividual ,
+                                                      :Corredor ;
+                                             :temHobby :cantar ;
+                                             :temTshirt :amarela ;
+                                             :vive :Paraná ;
+                                             :idade "25"^^xsd:int ;
+                                             :nome "Paulo" ;
+                                             :número "963" .
+
+###  http://rpcw.di.uminho.pt/2024/corridas#Paraná
+:Paraná rdf:type owl:NamedIndividual ,
+                :Estado .
+
+
+###  http://rpcw.di.uminho.pt/2024/corridas#cantar
+:cantar rdf:type owl:NamedIndividual ,
+              :Hobby .
+
+
+###  http://rpcw.di.uminho.pt/2024/corridas#amarela
+:amarela rdf:type owl:NamedIndividual , :Tshirt .
+
+###  http://rpcw.di.uminho.pt/2024/corridas#899
+<http://rpcw.di.uminho.pt/2024/corridas#899> rdf:type owl:NamedIndividual ,
+                                                      :Corredor ;
+                                             :temHobby :pintar ;
+                                             :temTshirt :vermelha ;
+                                             :vive :Minas_Gerais ;
+                                             :idade "39"^^xsd:int ;
+                                             :nome "Tiago" ;
+                                             :número "899" .
+
+###  http://rpcw.di.uminho.pt/2024/corridas#Minas_Gerais
+:Minas_Gerais rdf:type owl:NamedIndividual ,
+                :Estado .
+
+
+###  http://rpcw.di.uminho.pt/2024/corridas#pintar
+:pintar rdf:type owl:NamedIndividual ,
+              :Hobby .
+
+
+###  http://rpcw.di.uminho.pt/2024/corridas#vermelha
+:vermelha rdf:type owl:NamedIndividual , :Tshirt .
+
+###  http://rpcw.di.uminho.pt/2024/corridas#612
+<http://rpcw.di.uminho.pt/2024/corridas#612> rdf:type owl:NamedIndividual ,
+                                                      :Corredor ;
+                                             :temHobby :dançar ;
+                                             :temTshirt :branca ;
+                                             :vive :Rio_de_Janeiro ;
+                                             :idade "41"^^xsd:int ;
+                                             :nome "Lúcio" ;
+                                             :número "612" .
+
+###  http://rpcw.di.uminho.pt/2024/corridas#Rio_de_Janeiro
+:Rio_de_Janeiro rdf:type owl:NamedIndividual ,
+                :Estado .
+
+
+###  http://rpcw.di.uminho.pt/2024/corridas#dançar
+:dançar rdf:type owl:NamedIndividual ,
+              :Hobby .
+
+
+###  http://rpcw.di.uminho.pt/2024/corridas#branca
+:branca rdf:type owl:NamedIndividual , :Tshirt .
+
+###  http://rpcw.di.uminho.pt/2024/corridas#455
+<http://rpcw.di.uminho.pt/2024/corridas#455> rdf:type owl:NamedIndividual ,
+                                                      :Corredor ;
+                                             :temHobby :desenhar ;
+                                             :temTshirt :verde ;
+                                             :vive :São_Paulo ;
+                                             :idade "28"^^xsd:int ;
+                                             :nome "Moacir" ;
+                                             :número "455" .
+
+###  http://rpcw.di.uminho.pt/2024/corridas#São_Paulo
+:São_Paulo rdf:type owl:NamedIndividual ,
+                :Estado .
+
+
+###  http://rpcw.di.uminho.pt/2024/corridas#desenhar
+:desenhar rdf:type owl:NamedIndividual ,
+              :Hobby .
+
+
+###  http://rpcw.di.uminho.pt/2024/corridas#verde
+:verde rdf:type owl:NamedIndividual , :Tshirt .
+
+
+###  Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi

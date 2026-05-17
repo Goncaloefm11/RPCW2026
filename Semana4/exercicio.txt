@@ -1,0 +1,26 @@
+SELECT (COUNT(*) as ?totalTriplos) WHERE {
+    ?s ?p ?o .
+}
+
+SELECT ?nome ?nascimento ?cognomes ?nomeDinastia WHERE {
+?rei a :Rei ;
+   	:nome ?nome ;
+     	:temReinado ?reinado .
+?reinado :dinastia ?dinastia .
+?dinastia :nome ?nomeDinastia .
+OPTIONAL { ?rei :nascimento ?nascimento . }
+OPTIONAL { ?rei :cognomes ?cognomes . }
+}
+
+SAO IGUAIS SO METEM / (estao ligados pela dinastia e nome)
+
+SELECT ?nome ?nascimento ?cognomes ?nomeDinastia WHERE {
+?rei a :Rei ;
+   	:nome ?nome ;
+     	:temReinado ?reinado .
+?reinado :dinastia/:nome ?nomeDinastia .
+OPTIONAL { ?rei :nascimento ?nascimento . }
+OPTIONAL { ?rei :cognomes ?cognomes . }
+}
+
+

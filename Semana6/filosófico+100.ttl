@@ -1,0 +1,128 @@
+@prefix : <http://example.org/polvo-filosofico#> .
+
+############################################################
+# 1. FUNCIONÁRIOS (20 Indivíduos)
+############################################################
+
+:Sartre a :Garcom ; :trabalhaEm :O_Polvo_Filosofico .
+:Beauvoir a :Garcom ; :trabalhaEm :O_Polvo_Filosofico .
+:Camus a :Cozinheiro ; :trabalhaEm :O_Polvo_Filosofico .
+:Nietzsche a :Cozinheiro ; :trabalhaEm :O_Polvo_Filosofico .
+:Hypatia a :Garcom ; :trabalhaEm :O_Polvo_Filosofico .
+:Spinoza a :Cozinheiro ; :trabalhaEm :O_Polvo_Filosofico .
+:Kant a :Garcom ; :trabalhaEm :O_Polvo_Filosofico .
+:Arendt a :Garcom ; :trabalhaEm :O_Polvo_Filosofico .
+:Heidegger a :Cozinheiro ; :trabalhaEm :O_Polvo_Filosofico .
+:Foucault a :Garcom ; :trabalhaEm :O_Polvo_Filosofico .
+:Derrida a :Cozinheiro ; :trabalhaEm :O_Polvo_Filosofico .
+:Hume a :Garcom ; :trabalhaEm :O_Polvo_Filosofico .
+:Locke a :Cozinheiro ; :trabalhaEm :O_Polvo_Filosofico .
+:Hobbes a :Garcom ; :trabalhaEm :O_Polvo_Filosofico .
+:Leibniz a :Cozinheiro ; :trabalhaEm :O_Polvo_Filosofico .
+:Berkeley a :Garcom ; :trabalhaEm :O_Polvo_Filosofico .
+:Mill a :Garcom ; :trabalhaEm :O_Polvo_Filosofico .
+:Rawls a :Cozinheiro ; :trabalhaEm :O_Polvo_Filosofico .
+:RoboCozinheiro4 a :RoboCozinheiro ; :trabalhaEm :O_Polvo_Filosofico .
+:RoboCozinheiro5 a :RoboCozinheiro ; :trabalhaEm :O_Polvo_Filosofico .
+
+############################################################
+# 2. CLIENTES (30 Indivíduos)
+############################################################
+
+:Diogenes a :Cliente .
+:Epicuro a :Cliente .
+:Zenao a :Cliente .
+:Platao a :Cliente .
+:Socrates a :Cliente .
+:Heraclito a :Cliente .
+:Parmenides a :Cliente .
+:Democrito a :Cliente .
+:Pitagoras a :Cliente .
+:Anaximandro a :Cliente .
+:PolvoPaulo a :Polvo , :Cliente . # Risco de canibalismo ontológico
+:PolvoDarwin a :Polvo , :Cliente .
+:GatoDerrida a :Gato , :Cliente .
+:Cliente_01 a :Cliente .
+:Cliente_02 a :Cliente .
+:Cliente_03 a :Cliente .
+:Cliente_04 a :Cliente .
+:Cliente_05 a :Cliente .
+:Cliente_06 a :Cliente .
+:Cliente_07 a :Cliente .
+:Cliente_08 a :Cliente .
+:Cliente_09 a :Cliente .
+:Cliente_10 a :Cliente .
+:Cliente_11 a :Cliente .
+:Cliente_12 a :Cliente .
+:Cliente_13 a :Cliente .
+:Cliente_14 a :Cliente .
+:Cliente_15 a :Cliente .
+:Cliente_16 a :Cliente .
+:Cliente_17 a :Cliente .
+
+############################################################
+# 3. INGREDIENTES (15 Indivíduos)
+############################################################
+
+:EssenciaDeSoja a :Ingrediente .
+:AlgaFenomenologica a :Ingrediente .
+:PimentaDoCaos a :Ingrediente .
+:SalDoNiilismo a :Ingrediente .
+:LeiteDeAmendoa a :Ingrediente .
+:TrigoRacional a :Ingrediente .
+:FermentoDialetico a :Ingrediente .
+:AguaDaCaverna a :Ingrediente .
+:MelDasIdeias a :Ingrediente .
+:FrutoProibido a :Ingrediente .
+:PeixeKierkegaard a :IngredienteAnimal .
+:CarneDeSísifo a :IngredienteAnimal .
+:OvoDeColombo a :IngredienteAnimal .
+:PolvoGrelhadoIngrediente a :IngredienteAnimal , :Polvo .
+:LulaCartesiana a :IngredienteAnimal .
+
+############################################################
+# 4. PRATOS (15 Indivíduos)
+############################################################
+
+:SopaDeNada a :PratoVegano ; :temIngrediente :AlgaFenomenologica , :SalDoNiilismo .
+:BanquetePlatonico a :PratoVegano ; :temIngrediente :EssenciaDeSoja , :MelDasIdeias .
+:PaoDaRazao a :PratoVegano ; :temIngrediente :TrigoRacional , :FermentoDialetico .
+:SaladaDeSombras a :PratoVegano ; :temIngrediente :AguaDaCaverna , :Alface .
+:HamburguerDoImperativo a :PratoCarnivoro ; :temIngrediente :CarneVaca , :PimentaDoCaos .
+:GrelhadoDeExistencia a :PratoCarnivoro ; :temIngrediente :CarneDeSísifo .
+:OmeleteDoConhecimento a :PratoCarnivoro ; :temIngrediente :OvoDeColombo .
+:BacalhauDaAngustia a :PratoCarnivoro ; :temIngrediente :PeixeKierkegaard .
+:SushisDeHeraclito a :PratoOntologicamenteAmbiguo ; :temIngrediente :Peixe , :Tofu .
+:LasanhaDualista a :PratoOntologicamenteAmbiguo ; :temIngrediente :CarneVaca , :EssenciaDeSoja .
+:CaldoDoDevir a :PratoOntologicamenteAmbiguo ; :temIngrediente :LulaCartesiana , :Cogumelos .
+:PastaDoInconsciente a :PratoOntologicamenteAmbiguo ; :temIngrediente :CarneVaca , :Tofu .
+:RisotoDaDuvida a :PratoOntologicamenteAmbiguo ; :temIngrediente :Peixe , :LeiteDeAmendoa .
+:CarpaccioDePolvo a :PratoCarnivoro ; :temIngrediente :PolvoGrelhadoIngrediente .
+:FricasseParadoxal a :PratoOntologicamenteAmbiguo ; :temIngrediente :CarneDeSísifo , :Tofu .
+
+############################################################
+# 5. PEDIDOS E CONSUMO (20 Indivíduos)
+############################################################
+
+:Pedido6 a :Pedido ; :contemPrato :SopaDeNada ; :feitoPor :Diogenes .
+:Pedido7 a :Pedido ; :contemPrato :BanquetePlatonico ; :feitoPor :Epicuro .
+:Pedido8 a :Pedido ; :contemPrato :HamburguerDoImperativo ; :feitoPor :Socrates .
+:Pedido9 a :Pedido ; :contemPrato :SushisDeHeraclito ; :feitoPor :Heraclito .
+:Pedido10 a :Pedido ; :contemPrato :CarpaccioDePolvo ; :feitoPor :PolvoPaulo .
+:Pedido11 a :Pedido ; :contemPrato :PaoDaRazao ; :feitoPor :Platao .
+:Pedido12 a :Pedido ; :contemPrato :GrelhadoDeExistencia ; :feitoPor :Parmenides .
+:Pedido13 a :Pedido ; :contemPrato :OmeleteDoConhecimento ; :feitoPor :Democrito .
+:Pedido14 a :Pedido ; :contemPrato :SaladaDeSombras ; :feitoPor :Pitagoras .
+:Pedido15 a :Pedido ; :contemPrato :CaldoDoDevir ; :feitoPor :Anaximandro .
+:Pedido16 a :Pedido ; :contemPrato :LasanhaDualista ; :feitoPor :Cliente_01 .
+:Pedido17 a :Pedido ; :contemPrato :RisotoDaDuvida ; :feitoPor :Cliente_02 .
+:Pedido18 a :Pedido ; :contemPrato :FricasseParadoxal ; :feitoPor :Cliente_03 .
+:Pedido19 a :Pedido ; :contemPrato :BacalhauDaAngustia ; :feitoPor :Cliente_04 .
+:Pedido20 a :Pedido ; :contemPrato :SopaDeNada ; :feitoPor :Cliente_05 .
+
+# Relações de Consumo (:come)
+:Diogenes :come :SopaDeNada .
+:Epicuro :come :BanquetePlatonico .
+:Socrates :come :HamburguerDoImperativo .
+:Heraclito :come :SushisDeHeraclito .
+:PolvoPaulo :come :CarpaccioDePolvo . # Inconsistência: Polvo comendo Polvo

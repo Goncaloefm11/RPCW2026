@@ -1,0 +1,106 @@
+[
+    {
+        "titulo": {
+            "type": "literal",
+            "value": "O Sol Nu II"
+        },
+        "tipoURI": {
+            "type": "uri",
+            "value": "http://example.org/biblioteca-temporal#LivroParadoxal"
+        },
+        "autor": {
+            "type": "literal",
+            "value": "Isaac Asimov II"
+        },
+        "evento": {
+            "type": "uri",
+            "value": "http://example.org/biblioteca-temporal#Nascimento_do_Sol"
+        },
+        "nomEvento": {
+            "type": "literal",
+            "value": "Formação do Sistema Solar"
+        },
+        "descricao": {
+            "type": "literal",
+            "value": "O colapso de uma nuvem molecular gigante que deu origem ao Sol há 4.6 mil milhões de anos."
+        }
+    },
+    {
+        "titulo": {
+            "type": "literal",
+            "value": "O Sol Nu II"
+        },
+        "tipoURI": {
+            "type": "uri",
+            "value": "http://example.org/biblioteca-temporal#LivroParadoxal"
+        },
+        "autor": {
+            "type": "literal",
+            "value": "Isaac Asimov II"
+        },
+        "evento": {
+            "type": "uri",
+            "value": "http://example.org/biblioteca-temporal#Nascimento_do_Sol"
+        },
+        "nomEvento": {
+            "type": "literal",
+            "value": "Formação do Sistema Solar"
+        },
+        "descricao": {
+            "type": "literal",
+            "value": "O colapso de uma nuvem molecular gigante que deu origem ao Sol há 4.6 mil milhões de anos."
+        }
+    },
+    {
+        "titulo": {
+            "type": "literal",
+            "value": "O Sol Nu II"
+        },
+        "tipoURI": {
+            "type": "uri",
+            "value": "http://example.org/biblioteca-temporal#LivroParadoxal"
+        },
+        "autor": {
+            "type": "literal",
+            "value": "Isaac Asimov II"
+        },
+        "evento": {
+            "type": "uri",
+            "value": "http://example.org/biblioteca-temporal#Nascimento_do_Sol"
+        },
+        "nomEvento": {
+            "type": "literal",
+            "value": "Formação do Sistema Solar"
+        },
+        "descricao": {
+            "type": "literal",
+            "value": "O colapso de uma nuvem molecular que deu origem à nossa estrela há 4.6 mil milhões de anos."
+        }
+    },
+    {
+        "titulo": {
+            "type": "literal",
+            "value": "O Sol Nu II"
+        },
+        "tipoURI": {
+            "type": "uri",
+            "value": "http://example.org/biblioteca-temporal#LivroParadoxal"
+        },
+        "autor": {
+            "type": "literal",
+            "value": "Isaac Asimov II"
+        },
+        "evento": {
+            "type": "uri",
+            "value": "http://example.org/biblioteca-temporal#Nascimento_do_Sol"
+        },
+        "nomEvento": {
+            "type": "literal",
+            "value": "Formação do Sistema Solar"
+        },
+        "descricao": {
+            "type": "literal",
+            "value": "O colapso de uma nuvem molecular que deu origem à nossa estrela há 4.6 mil milhões de anos."
+        }
+    }
+]

@@ -1,0 +1,127 @@
+@prefix : <http://example.org/polvo-filosofico#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+############################################################
+# 1. NOVOS AGENTES: CIENTISTAS E LITERATOS (30 Indivíduos)
+############################################################
+
+# Funcionários (Máquinas e Pessoas)
+:AlanTuring a :Cozinheiro ; :trabalhaEm :O_Polvo_Filosofico .
+:AdaLovelace a :Garcom ; :trabalhaEm :O_Polvo_Filosofico .
+:RoboAsimov a :RoboCozinheiro ; :trabalhaEm :O_Polvo_Filosofico .
+:MarieCurie a :Cozinheiro ; :trabalhaEm :O_Polvo_Filosofico .
+:Darwin a :Garcom ; :trabalhaEm :O_Polvo_Filosofico .
+
+# Clientes (Cientistas e Escritores)
+:Einstein a :Cliente .
+:Newton a :Cliente .
+:Tesla a :Cliente .
+:Galileu a :Cliente .
+:Kafka a :Cliente .
+:VirginiaWoolf a :Cliente .
+:Borges a :Cliente .
+:UmbertoEco a :Cliente .
+:MaryShelley a :Cliente .
+:Orwell a :Cliente .
+:Huxley a :Cliente .
+:Asimov a :Cliente .
+:Heisenberg a :Cliente .
+:Planck a :Cliente .
+:Curioso_01 a :Cliente .
+:Curioso_02 a :Cliente .
+:Curioso_03 a :Cliente .
+:Curioso_04 a :Cliente .
+:Curioso_05 a :Cliente .
+:Curioso_06 a :Cliente .
+:Curioso_07 a :Cliente .
+:Curioso_08 a :Cliente .
+:Curioso_09 a :Cliente .
+:Curioso_10 a :Cliente .
+:GatoCheshire a :Gato , :Cliente .
+
+############################################################
+# 2. NOVOS INGREDIENTES (20 Indivíduos)
+############################################################
+
+:MassaEscura a :Ingrediente .
+:EnergiaVazia a :Ingrediente .
+:AtomoDeCarbono a :Ingrediente .
+:ADN_Sintetico a :Ingrediente .
+:LodoPrimordial a :Ingrediente .
+:PoDeEstrelas a :Ingrediente .
+:Mel_de_AbelhasMecanicas a :Ingrediente .
+:LeiteDeUnicornio a :IngredienteAnimal . # Definido como animal para teste
+:GalinhaDeSchrodinger a :IngredienteAnimal .
+:PorcoDeEpicuro a :IngredienteAnimal .
+:LagostaDeWallace a :IngredienteAnimal .
+:PolvoCulinario_X a :IngredienteAnimal , :Polvo .
+:TentaculoAbstracto a :IngredienteAnimal , :Polvo .
+:CogumeloAlucinogeno a :Ingrediente .
+:ErvaDoLivreArbitrio a :Ingrediente .
+:SalGrossoDeSartre a :Ingrediente .
+:AzeiteDaVerdade a :Ingrediente .
+:PimentaDaDiscordia a :Ingrediente .
+:OvoDeFenix a :IngredienteAnimal .
+:QueijoDaCaverna a :IngredienteAnimal .
+
+############################################################
+# 3. NOVOS PRATOS (20 Indivíduos)
+############################################################
+
+:SopaRelativista a :PratoVegano ; :temIngrediente :MassaEscura , :PoDeEstrelas .
+:SaladaDeEntropia a :PratoVegano ; :temIngrediente :Alface , :PimentaDaDiscordia .
+:RisotoQuantico a :PratoOntologicamenteAmbiguo ; :temIngrediente :GalinhaDeSchrodinger , :Tofu .
+:BifeDeFrankenstein a :PratoCarnivoro ; :temIngrediente :ADN_Sintetico , :CarneVaca .
+:OmeleteImortal a :PratoCarnivoro ; :temIngrediente :OvoDeFenix .
+:PastaDaMetafora a :PratoVegano ; :temIngrediente :TrigoRacional , :AzeiteDaVerdade .
+:EnsopadoDeMobyDick a :PratoCarnivoro ; :temIngrediente :Peixe , :SalGrossoDeSartre .
+:DilemaDoPrisioneiro a :PratoOntologicamenteAmbiguo ; :temIngrediente :CarneDeSísifo , :Tofu .
+:LasanhaDeBorges a :PratoOntologicamenteAmbiguo ; :temIngrediente :CarneVaca , :CogumeloAlucinogeno .
+:PizzaDeCopernico a :PratoVegano ; :temIngrediente :Tomate , :ErvaDoLivreArbitrio .
+:SandesDeMetamorfose a :PratoCarnivoro ; :temIngrediente :LagostaDeWallace .
+:CaldoDeNietzsche a :PratoCarnivoro ; :temIngrediente :PorcoDeEpicuro .
+:PetiscoDeTentaculos a :PratoCarnivoro ; :temIngrediente :PolvoCulinario_X .
+:BanqueteDeBabete a :PratoCarnivoro ; :temIngrediente :Peixe , :OvoDeFenix .
+:IogurteDeSchopenhauer a :PratoCarnivoro ; :temIngrediente :LeiteDeUnicornio .
+:PratoFantasma_01 a :Prato .
+:PratoFantasma_02 a :Prato .
+:PratoFantasma_03 a :Prato .
+:PratoFantasma_04 a :Prato .
+:PratoFantasma_05 a :Prato .
+
+############################################################
+# 4. PEDIDOS E CONSUMO (30 Indivíduos)
+############################################################
+
+:Pedido_101 a :Pedido ; :contemPrato :SopaRelativista ; :feitoPor :Einstein .
+:Pedido_102 a :Pedido ; :contemPrato :OmeleteImortal ; :feitoPor :MaryShelley .
+:Pedido_103 a :Pedido ; :contemPrato :RisotoQuantico ; :feitoPor :Heisenberg .
+:Pedido_104 a :Pedido ; :contemPrato :PetiscoDeTentaculos ; :feitoPor :Aristoteles . # Novo conflito!
+:Pedido_105 a :Pedido ; :contemPrato :SaladaDeEntropia ; :feitoPor :Kafka .
+:Pedido_106 a :Pedido ; :contemPrato :BifeDeFrankenstein ; :feitoPor :Tesla .
+:Pedido_107 a :Pedido ; :contemPrato :PastaDaMetafora ; :feitoPor :Borges .
+:Pedido_108 a :Pedido ; :contemPrato :IogurteDeSchopenhauer ; :feitoPor :VirginiaWoolf .
+:Pedido_109 a :Pedido ; :contemPrato :PizzaDeCopernico ; :feitoPor :Galileu .
+:Pedido_110 a :Pedido ; :contemPrato :CaldoDeNietzsche ; :feitoPor :Huxley .
+
+# Relações de Consumo (:come) para preencher os 100 indivíduos
+:Einstein :come :SopaRelativista .
+:MaryShelley :come :OmeleteImortal .
+:Heisenberg :come :RisotoQuantico .
+:Kafka :come :SaladaDeEntropia .
+:Tesla :come :BifeDeFrankenstein .
+:Borges :come :PastaDaMetafora .
+:VirginiaWoolf :come :IogurteDeSchopenhauer .
+:Galileu :come :PizzaDeCopernico .
+:Huxley :come :CaldoDeNietzsche .
+:Newton :come :PizzaDeCopernico .
+:Darwin :come :EnsopadoDeMobyDick .
+:AlanTuring :come :SopaRelativista .
+:AdaLovelace :come :PastaDaMetafora .
+:MarieCurie :come :OmeleteImortal .
+:Asimov :come :SopaRelativista .
+:Orwell :come :CaldoDeNietzsche .
+:UmbertoEco :come :LasanhaDeBorges .
+:Planck :come :RisotoQuantico .
+:GatoCheshire :come :PeixeDoLivreArbitrio .
+:Aristoteles :come :PetiscoDeTentaculos . # Inconsistência Polvo -> Polvo

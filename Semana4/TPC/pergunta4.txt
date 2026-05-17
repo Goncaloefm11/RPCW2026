@@ -1,0 +1,10 @@
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX : <http://www.semanticweb.org/gugafm11/ontologies/2026/untitled-ontology-15#>
+PREFIX ns1: <http://www.semanticweb.org/gugafm11/ontologies/2026/bibliotecatemporal/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?livro ?eventos WHERE {
+    ?livro rdf:type :LivroHistorico .
+    ?livro :refereEvento/rdf:type :EventoHistorico .
+}
