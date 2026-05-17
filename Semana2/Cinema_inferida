@@ -1,0 +1,396 @@
+@prefix : <http://www.semanticweb.org/gugafm11/ontologies/2026/Cinema_inferida#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/gugafm11/ontologies/2026/Cinema_inferida> .
+
+<http://www.semanticweb.org/gugafm11/ontologies/2026/Cinema_inferida> rdf:type owl:Ontology ;
+                                                                       rdfs:comment "Uma ontologia sobre cinema"@pt .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Atuou
+<http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Atuou> rdf:type owl:ObjectProperty ;
+                                                                   owl:inverseOf <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#temAtor> ;
+                                                                   rdf:type owl:FunctionalProperty ;
+                                                                   rdfs:domain <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Pessoa> ;
+                                                                   rdfs:range <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Filme> .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#compôs
+<http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#compôs> rdf:type owl:ObjectProperty ;
+                                                                    owl:inverseOf <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#foiComposto> ;
+                                                                    rdfs:domain <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Pessoa> ;
+                                                                    rdfs:range <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Obra> .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#escreveu
+<http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#escreveu> rdf:type owl:ObjectProperty ;
+                                                                      rdfs:domain <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Pessoa> ;
+                                                                      rdfs:range <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Obra> .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#foiComposto
+<http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#foiComposto> rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#foiEscrito
+<http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#foiEscrito> rdf:type owl:ObjectProperty ;
+                                                                        owl:inverseOf <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#foiEscrito> ;
+                                                                        rdf:type owl:SymmetricProperty .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#foiRealizado
+<http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#foiRealizado> rdf:type owl:ObjectProperty ;
+                                                                          owl:inverseOf <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#realizou> .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#realizou
+<http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#realizou> rdf:type owl:ObjectProperty ,
+                                                                               owl:FunctionalProperty ;
+                                                                      rdfs:domain <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Pessoa> ;
+                                                                      rdfs:range <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Filme> .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#temAtor
+<http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#temAtor> rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#temGénero
+<http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#temGénero> rdf:type owl:ObjectProperty ;
+                                                                       rdfs:domain <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Filme> ;
+                                                                       rdfs:range <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Género> .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#temLingua
+<http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#temLingua> rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#temPeçaMusical
+<http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#temPeçaMusical> rdf:type owl:ObjectProperty ;
+                                                                            rdfs:domain <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Filme> ;
+                                                                            rdfs:range <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#PeçaMusical> .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#data
+<http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#data> rdf:type owl:DatatypeProperty ;
+                                                                  rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#duracao
+<http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#duracao> rdf:type owl:DatatypeProperty ;
+                                                                     rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#temSexo
+<http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#temSexo> rdf:type owl:DatatypeProperty ;
+                                                                     rdfs:domain <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Pessoa> ;
+                                                                     rdfs:range xsd:string .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Argumento
+<http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Argumento> rdf:type owl:Class ;
+                                                                       rdfs:subClassOf <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Obra> .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Ator
+<http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Ator> rdf:type owl:Class ;
+                                                                  owl:equivalentClass [ owl:intersectionOf ( <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Pessoa>
+                                                                                                             [ rdf:type owl:Restriction ;
+                                                                                                               owl:onProperty <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Atuou> ;
+                                                                                                               owl:someValuesFrom <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Filme>
+                                                                                                             ]
+                                                                                                           ) ;
+                                                                                        rdf:type owl:Class
+                                                                                      ] ;
+                                                                  rdfs:subClassOf <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Pessoa> ,
+                                                                                  [ rdf:type owl:Class ;
+                                                                                    owl:unionOf ( <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#AtorFeminina>
+                                                                                                  <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#AtorMasculino>
+                                                                                                )
+                                                                                  ] .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#AtorFeminina
+<http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#AtorFeminina> rdf:type owl:Class ;
+                                                                          owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                                                                owl:onProperty <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#temSexo> ;
+                                                                                                owl:hasValue "F"
+                                                                                              ] ;
+                                                                          rdfs:subClassOf <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Ator> .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#AtorMasculino
+<http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#AtorMasculino> rdf:type owl:Class ;
+                                                                           owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                                                                 owl:onProperty <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#temSexo> ;
+                                                                                                 owl:hasValue "M"
+                                                                                               ] ;
+                                                                           rdfs:subClassOf <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Ator> .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Escritor
+<http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Escritor> rdf:type owl:Class ;
+                                                                      owl:equivalentClass [ owl:intersectionOf ( <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Pessoa>
+                                                                                                                 [ rdf:type owl:Restriction ;
+                                                                                                                   owl:onProperty <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#escreveu> ;
+                                                                                                                   owl:someValuesFrom [ rdf:type owl:Class ;
+                                                                                                                                        owl:unionOf ( <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Argumento>
+                                                                                                                                                      <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Livro>
+                                                                                                                                                    )
+                                                                                                                                      ]
+                                                                                                                 ]
+                                                                                                               ) ;
+                                                                                            rdf:type owl:Class
+                                                                                          ] ;
+                                                                      rdfs:subClassOf <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Pessoa> .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Filme
+<http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Filme> rdf:type owl:Class ;
+                                                                   rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#data> ;
+                                                                                     owl:someValuesFrom xsd:string
+                                                                                   ] ,
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#duracao> ;
+                                                                                     owl:someValuesFrom xsd:integer
+                                                                                   ] .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#FilmesDramáticos
+<http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#FilmesDramáticos> rdf:type owl:Class ;
+                                                                              owl:equivalentClass [ owl:intersectionOf ( <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Filme>
+                                                                                                                         [ rdf:type owl:Restriction ;
+                                                                                                                           owl:onProperty <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#temGénero> ;
+                                                                                                                           owl:hasValue <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Drama>
+                                                                                                                         ]
+                                                                                                                       ) ;
+                                                                                                    rdf:type owl:Class
+                                                                                                  ] ;
+                                                                              rdfs:subClassOf <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Filme> .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#FilmesRomanticos
+<http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#FilmesRomanticos> rdf:type owl:Class ;
+                                                                              owl:equivalentClass [ owl:intersectionOf ( <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Filme>
+                                                                                                                         [ rdf:type owl:Restriction ;
+                                                                                                                           owl:onProperty <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#temGénero> ;
+                                                                                                                           owl:hasValue <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Romance>
+                                                                                                                         ]
+                                                                                                                       ) ;
+                                                                                                    rdf:type owl:Class
+                                                                                                  ] ;
+                                                                              rdfs:subClassOf <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Filme> .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Género
+<http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Género> rdf:type owl:Class ;
+                                                                    owl:equivalentClass [ rdf:type owl:Class ;
+                                                                                          owl:oneOf ( <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Acao>
+                                                                                                      <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Aventura>
+                                                                                                      <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Comédia>
+                                                                                                      <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Drama>
+                                                                                                      <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Ficcao>
+                                                                                                      <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Infantil>
+                                                                                                      <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Romance>
+                                                                                                      <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Terror>
+                                                                                                      <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Thriller>
+                                                                                                    )
+                                                                                        ] .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Livro
+<http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Livro> rdf:type owl:Class ;
+                                                                   rdfs:subClassOf <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Obra> .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Músico
+<http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Músico> rdf:type owl:Class ;
+                                                                    owl:equivalentClass [ owl:intersectionOf ( <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Pessoa>
+                                                                                                               [ rdf:type owl:Restriction ;
+                                                                                                                 owl:onProperty <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#compôs> ;
+                                                                                                                 owl:someValuesFrom <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#PeçaMusical>
+                                                                                                               ]
+                                                                                                             ) ;
+                                                                                          rdf:type owl:Class
+                                                                                        ] ;
+                                                                    rdfs:subClassOf <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Pessoa> .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Obra
+<http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Obra> rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Pessoa
+<http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Pessoa> rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#PeçaMusical
+<http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#PeçaMusical> rdf:type owl:Class ;
+                                                                         rdfs:subClassOf <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Obra> .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Realizador
+<http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Realizador> rdf:type owl:Class ;
+                                                                        owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                                                              owl:onProperty <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#realizou> ;
+                                                                                              owl:someValuesFrom <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Filme>
+                                                                                            ] ;
+                                                                        rdfs:subClassOf <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Pessoa> .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Acao
+<http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Acao> rdf:type owl:NamedIndividual ,
+                                                                           <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Género> .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#ArgumentoTwilight
+<http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#ArgumentoTwilight> rdf:type owl:NamedIndividual ;
+                                                                               <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#foiEscrito> <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#P_Melissa_Rosenberg> .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Aventura
+<http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Aventura> rdf:type owl:NamedIndividual ,
+                                                                               <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Género> .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Comédia
+<http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Comédia> rdf:type owl:NamedIndividual ,
+                                                                              <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Género> .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Drama
+<http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Drama> rdf:type owl:NamedIndividual ,
+                                                                            <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Género> .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#F_Twilight
+<http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#F_Twilight> rdf:type owl:NamedIndividual ,
+                                                                                 <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Filme> ,
+                                                                                 <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#FilmesDramáticos> ,
+                                                                                 <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#FilmesRomanticos> ;
+                                                                        <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#foiRealizado> <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#P_Catherine_Hardwicke> ;
+                                                                        <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#temAtor> <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#P_Billy_Burke> ,
+                                                                                                                                             <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#P_Kristen_Stewart> ,
+                                                                                                                                             <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#P_Robert_Pattinson> ,
+                                                                                                                                             <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#P_Sarah_Clarke> ,
+                                                                                                                                             <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#P_Taylor_Lautner> ;
+                                                                        <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#temGénero> <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Drama> ,
+                                                                                                                                               <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Romance> ,
+                                                                                                                                               <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Thriller> ;
+                                                                        <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#temLingua> <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#L_Inglês> ;
+                                                                        <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#data> "2008-12-04"^^xsd:string ;
+                                                                        <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#duracao> 122 .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Ficcao
+<http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Ficcao> rdf:type owl:NamedIndividual ,
+                                                                             <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Género> .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Infantil
+<http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Infantil> rdf:type owl:NamedIndividual ,
+                                                                               <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Género> .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#L_Inglês
+<http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#L_Inglês> rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#P_Billy_Burke
+<http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#P_Billy_Burke> rdf:type owl:NamedIndividual ,
+                                                                                    <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Ator> ,
+                                                                                    <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#AtorMasculino> ,
+                                                                                    <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Pessoa> ;
+                                                                           <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Atuou> <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#F_Twilight> ;
+                                                                           <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#temSexo> "M"^^xsd:string .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#P_Catherine_Hardwicke
+<http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#P_Catherine_Hardwicke> rdf:type owl:NamedIndividual ,
+                                                                                            <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Ator> ,
+                                                                                            <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#AtorFeminina> ,
+                                                                                            <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Pessoa> ,
+                                                                                            <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Realizador> ;
+                                                                                   <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#realizou> <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#F_Twilight> ;
+                                                                                   <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#temSexo> "F"^^xsd:string .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#P_Kristen_Stewart
+<http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#P_Kristen_Stewart> rdf:type owl:NamedIndividual ,
+                                                                                        <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Ator> ,
+                                                                                        <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#AtorFeminina> ,
+                                                                                        <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Pessoa> ;
+                                                                               <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Atuou> <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#F_Twilight> ;
+                                                                               <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#temSexo> "F"^^xsd:string .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#P_Melissa_Rosenberg
+<http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#P_Melissa_Rosenberg> rdf:type owl:NamedIndividual ,
+                                                                                          <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Ator> ,
+                                                                                          <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#AtorFeminina> ,
+                                                                                          <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Pessoa> ;
+                                                                                 <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#foiEscrito> <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#ArgumentoTwilight> ;
+                                                                                 <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#temSexo> "F"^^xsd:string .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#P_Robert_Pattinson
+<http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#P_Robert_Pattinson> rdf:type owl:NamedIndividual ,
+                                                                                         <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Ator> ,
+                                                                                         <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#AtorMasculino> ,
+                                                                                         <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Pessoa> ;
+                                                                                <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Atuou> <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#F_Twilight> ;
+                                                                                <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#temSexo> "M"^^xsd:string .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#P_Sarah_Clarke
+<http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#P_Sarah_Clarke> rdf:type owl:NamedIndividual ,
+                                                                                     <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Ator> ,
+                                                                                     <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#AtorFeminina> ,
+                                                                                     <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Pessoa> ;
+                                                                            <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Atuou> <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#F_Twilight> ;
+                                                                            <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#temSexo> "F"^^xsd:string .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#P_Taylor_Lautner
+<http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#P_Taylor_Lautner> rdf:type owl:NamedIndividual ,
+                                                                                       <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Ator> ,
+                                                                                       <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#AtorMasculino> ,
+                                                                                       <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Pessoa> ;
+                                                                              <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Atuou> <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#F_Twilight> ;
+                                                                              <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#temSexo> "M"^^xsd:string .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Romance
+<http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Romance> rdf:type owl:NamedIndividual ,
+                                                                              <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Género> .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Terror
+<http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Terror> rdf:type owl:NamedIndividual ,
+                                                                             <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Género> .
+
+
+###  http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Thriller
+<http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Thriller> rdf:type owl:NamedIndividual ,
+                                                                               <http://www.semanticweb.org/gugafm11/ontologies/2026/cinema#Género> .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

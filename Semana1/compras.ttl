@@ -1,0 +1,21 @@
+@prefix : <http://rpcw.di.uminho.pt/2026/compras#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+### Ontologia de Compras
+
+:Lista_de_compras_1 rdf:type :Lista ;
+    :data "2021-01-18" .
+
+:Postas_de_Salmão rdf:type :Produto ;
+    :temCategoria "Peixe" ;
+    :quantidade 4 ;
+    :unidade "unidade" ;
+    :pertenceALista :Lista_de_compras_1 .
+
+:Embalagem_de_SKIP rdf:type :Produto ;
+    :temCategoria "Limpeza" ;
+    :quantidade 3 ;
+    :unidade "unidade" ;
+    :pertenceALista :Lista_de_compras_1 .

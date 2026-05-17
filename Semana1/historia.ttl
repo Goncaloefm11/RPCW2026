@@ -1,0 +1,309 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#"
+     xml:base="http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:untitled-ontology-4="http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#falaLingua -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#falaLingua"/>
+    
+
+
+    <!-- http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#inscritoEm -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#inscritoEm"/>
+    
+
+
+    <!-- http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#lecionadoPor -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#lecionadoPor"/>
+    
+
+
+    <!-- http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#naturalDe -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#naturalDe"/>
+    
+
+
+    <!-- http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#parceiroDe -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#parceiroDe"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#diaAula -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#diaAula"/>
+    
+
+
+    <!-- http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#nasceu -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#nasceu"/>
+    
+
+
+    <!-- http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#temIdade -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#temIdade"/>
+    
+
+
+    <!-- http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#temNome -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#temNome"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/gugafm11/ontologies/2026/1/Pessoa -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/gugafm11/ontologies/2026/1/Pessoa"/>
+    
+
+
+    <!-- http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#Cadeiras -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#Cadeiras"/>
+    
+
+
+    <!-- http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#Cidade -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#Cidade"/>
+    
+
+
+    <!-- http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#Curso -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#Curso"/>
+    
+
+
+    <!-- http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#Lingua -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#Lingua"/>
+    
+
+
+    <!-- http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#Universidade -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#Universidade"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#Alemao -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#Alemao">
+        <rdf:type rdf:resource="http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#Lingua"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#Ana -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#Ana">
+        <rdf:type rdf:resource="http://www.semanticweb.org/gugafm11/ontologies/2026/1/Pessoa"/>
+        <inscritoEm rdf:resource="http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#Curso_alemao"/>
+        <naturalDe rdf:resource="http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#Portugues"/>
+        <parceiroDe rdf:resource="http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#Carlos"/>
+        <parceiroDe rdf:resource="http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#Eduardo"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#Artes -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#Artes">
+        <rdf:type rdf:resource="http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#Cadeiras"/>
+        <lecionadoPor rdf:resource="http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#Helmut_Ratz"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#Carlos -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#Carlos">
+        <rdf:type rdf:resource="http://www.semanticweb.org/gugafm11/ontologies/2026/1/Pessoa"/>
+        <inscritoEm rdf:resource="http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#Curso_alemao"/>
+        <naturalDe rdf:resource="http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#Portugues"/>
+        <parceiroDe rdf:resource="http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#Ana"/>
+        <parceiroDe rdf:resource="http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#Eduardo"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#CienciasHumanas -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#CienciasHumanas">
+        <rdf:type rdf:resource="http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#Cadeiras"/>
+        <lecionadoPor rdf:resource="http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#Helmut_Ratz"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#Curso_Biotecnologia -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#Curso_Biotecnologia">
+        <rdf:type rdf:resource="http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#Curso"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#Curso_alemao -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#Curso_alemao">
+        <rdf:type rdf:resource="http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#Curso"/>
+        <lecionadoPor rdf:resource="http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#Helmut_Ratz"/>
+        <diaAula>sextas-feiras</diaAula>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#Eduardo -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#Eduardo">
+        <rdf:type rdf:resource="http://www.semanticweb.org/gugafm11/ontologies/2026/1/Pessoa"/>
+        <falaLingua rdf:resource="http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#Espanhol"/>
+        <falaLingua rdf:resource="http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#Ingles"/>
+        <falaLingua rdf:resource="http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#Portugues"/>
+        <inscritoEm rdf:resource="http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#Curso_alemao"/>
+        <inscritoEm rdf:resource="http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#Universidade_do_Minho"/>
+        <naturalDe rdf:resource="http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#Portugues"/>
+        <parceiroDe rdf:resource="http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#Ana"/>
+        <parceiroDe rdf:resource="http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#Hanna"/>
+        <nasceu>no Porto</nasceu>
+        <temIdade>21 anos</temIdade>
+        <temNome>Eduardo</temNome>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#Espanhol -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#Espanhol">
+        <rdf:type rdf:resource="http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#Lingua"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#Hanna -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#Hanna">
+        <rdf:type rdf:resource="http://www.semanticweb.org/gugafm11/ontologies/2026/1/Pessoa"/>
+        <falaLingua rdf:resource="http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#Alemao"/>
+        <inscritoEm rdf:resource="http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#Curso_Biotecnologia"/>
+        <naturalDe rdf:resource="http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#Alemao"/>
+        <parceiroDe rdf:resource="http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#Eduardo"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#Helmut_Ratz -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#Helmut_Ratz">
+        <rdf:type rdf:resource="http://www.semanticweb.org/gugafm11/ontologies/2026/1/Pessoa"/>
+        <falaLingua rdf:resource="http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#Alemao"/>
+        <naturalDe rdf:resource="http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#Alemao"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#Ingles -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#Ingles">
+        <rdf:type rdf:resource="http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#Lingua"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#Letras -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#Letras">
+        <rdf:type rdf:resource="http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#Cadeiras"/>
+        <lecionadoPor rdf:resource="http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#Helmut_Ratz"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#Porto -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#Porto">
+        <rdf:type rdf:resource="http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#Cidade"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#Portugues -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#Portugues">
+        <rdf:type rdf:resource="http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#Lingua"/>
+        <parceiroDe rdf:resource="http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#Carlos"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#Universidade_do_Minho -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#Universidade_do_Minho">
+        <rdf:type rdf:resource="http://www.semanticweb.org/gugafm11/ontologies/2026/1/untitled-ontology-4#Universidade"/>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+
