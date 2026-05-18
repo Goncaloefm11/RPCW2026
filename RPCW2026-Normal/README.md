@@ -56,4 +56,4 @@ Para garantir o isolamento dos dados e evitar conflitos de prefixos, a validaç�
 2. Efetue o upload e o import do ficheiro base **`boardgames_base.ttl`**.
 3. Efetue o upload e o import do ficheiro povoado final **`boardgames_ind.ttl`**.
 4. No painel **SPARQL**, execute as consultas analíticas presentes no ficheiro **`sparql.txt`**.
-5. *(Opcional)* As queries de mutação `INSERT` utilizadas para gerar as propriedades inversas encontram-se mapeadas na secção final do ficheiro **`sparql.txt`**.
+5. *(Opcional)* As queries de criação e mutação `CONSTRUCT`e `INSERT` respetivamente, utilizadas para gerar as propriedades inversas encontram-se mapeadas na secção final do ficheiro **`sparql.txt`**.
