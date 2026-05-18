@@ -1,0 +1,85 @@
+@prefix : <http://www.di.uminho.pt/rpcw2026/PG61524/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.di.uminho.pt/rpcw2026/PG61524> rdf:type owl:Ontology .
+
+### =================================================================
+### Classes
+### =================================================================
+
+:Game rdf:type owl:Class .
+:Designer rdf:type owl:Class .
+:Publisher rdf:type owl:Class .
+:Mechanic rdf:type owl:Class .
+:Award rdf:type owl:Class .
+
+### =================================================================
+### Object Properties
+### =================================================================
+
+:designedGame rdf:type owl:ObjectProperty ;
+              rdfs:domain :Designer ;
+              rdfs:range :Game .
+
+:publishedGame rdf:type owl:ObjectProperty ;
+               rdfs:domain :Publisher ;
+               rdfs:range :Game .
+
+# Relação inversa de publishedGame (alinea 21)
+:isPublishedBy rdf:type owl:ObjectProperty ;
+               rdfs:domain :Game ;
+               rdfs:range :Publisher .
+
+:usedInGame rdf:type owl:ObjectProperty ;
+            rdfs:domain :Mechanic ;
+            rdfs:range :Game .
+
+:wonByGame rdf:type owl:ObjectProperty ;
+           rdfs:domain :Award ;
+           rdfs:range :Game .
+
+# Nova relação pedida por inferência (Alínea 23)
+:hasMechanic rdf:type owl:ObjectProperty ;
+             rdfs:domain :Game ;
+             rdfs:range :Mechanic .
+
+### =================================================================
+### Data Properties
+### =================================================================
+
+:id rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:string .
+
+:name rdf:type owl:DatatypeProperty ;
+      rdfs:range xsd:string .
+
+:category rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Game ;
+          rdfs:range xsd:string .
+
+:minPlayers rdf:type owl:DatatypeProperty ;
+            rdfs:domain :Game ;
+            rdfs:range xsd:integer .
+
+:maxPlayers rdf:type owl:DatatypeProperty ;
+            rdfs:domain :Game ;
+            rdfs:range xsd:integer .
+
+:playingTimeMinutes rdf:type owl:DatatypeProperty ;
+                    rdfs:domain :Game ;
+                    rdfs:range xsd:integer .
+
+:descriptionEN rdf:type owl:DatatypeProperty ;
+               rdfs:domain :Game ;
+               rdfs:range xsd:string .
+
+:country rdf:type owl:DatatypeProperty ;
+         rdfs:domain :Publisher ;
+         rdfs:range xsd:string .
+
+:year rdf:type owl:DatatypeProperty ;
+      rdfs:domain :Award ;
+      rdfs:range xsd:integer .

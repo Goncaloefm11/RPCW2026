@@ -1,0 +1,82 @@
+@prefix : <http://www.di.uminho.pt/rpcw2026/fabula/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.di.uminho.pt/rpcw2026/fabula> rdf:type owl:Ontology .
+
+### =================================================================
+### Classes
+### =================================================================
+
+:Personagem rdf:type owl:Class .
+:Animal rdf:type owl:Class ; rdfs:subClassOf :Personagem .
+:Corvo rdf:type owl:Class ; rdfs:subClassOf :Animal . 
+:Raposa rdf:type owl:Class ; rdfs:subClassOf :Animal .
+:Objeto rdf:type owl:Class . 
+:Sentimento rdf:type owl:Class . 
+:Caracteristica rdf:type owl:Class .
+:Localizacao rdf:type owl:Class .
+
+### =================================================================
+### Object Properties
+### =================================================================
+
+:possui rdf:type owl:ObjectProperty ;
+        rdfs:domain :Personagem ;
+        rdfs:range :Objeto . 
+
+:estaLocalizadoEm rdf:type owl:ObjectProperty ;
+                  rdfs:domain [ owl:unionOf (:Personagem :Objeto) ] ;
+                  rdfs:range :Localizacao . 
+
+:temCaracteristica rdf:type owl:ObjectProperty ;
+                    rdfs:domain :Personagem ;
+                    rdfs:range :Caracteristica . 
+
+:sente rdf:type owl:ObjectProperty ;
+       rdfs:domain :Personagem ;
+       rdfs:range :Sentimento . 
+
+:enganou rdf:type owl:ObjectProperty ;
+         rdfs:domain :Personagem ;
+         rdfs:range :Personagem . 
+
+### =================================================================
+### Data Properties
+### =================================================================
+
+:nome rdf:type owl:DatatypeProperty ;
+      rdfs:range xsd:string .
+
+### =================================================================
+### Indivíduos
+### =================================================================
+
+# Características e Sentimentos
+:vaidade rdf:type owl:NamedIndividual, :Sentimento ; :nome "Vaidade" . 
+:vergonha rdf:type owl:NamedIndividual, :Sentimento ; :nome "Vergonha" . 
+:astucia rdf:type owl:NamedIndividual, :Caracteristica ; :nome "Astúcia" . 
+
+# Localizações
+:ramo_da_arvore rdf:type owl:NamedIndividual, :Localizacao ; :nome "Ramo de uma alta árvore" . 
+:base_da_arvore rdf:type owl:NamedIndividual, :Localizacao ; :nome "Base da árvore" .
+
+# Objetos
+:queijo rdf:type owl:NamedIndividual, :Objeto ;
+        :nome "Queijo" ;
+        :estaLocalizadoEm :ramo_da_arvore .
+
+# Personagens
+:mestre_corvo rdf:type owl:NamedIndividual, :Corvo ;
+              :nome "Mestre Corvo" ;
+              :possui :queijo ;
+              :estaLocalizadoEm :ramo_da_arvore ;
+              :sente :vaidade, :vergonha . 
+
+:mestre_raposa rdf:type owl:NamedIndividual, :Raposa ;
+               :nome "Mestre Raposa" ;
+               :estaLocalizadoEm :base_da_arvore ;
+               :temCaracteristica :astucia ;
+               :enganou :mestre_corvo .

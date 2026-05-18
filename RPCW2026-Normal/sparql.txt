@@ -1,0 +1,157 @@
+PREFIX : <http://www.di.uminho.pt/rpcw2026/PG61524/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+# 12. Quais são os jogos criados por um determinado autor? (Exemplo: Klaus Teuber)
+SELECT ?gameName WHERE {
+    ?author :name "Klaus Teuber" .
+    ?author :designedGame ?game .
+    ?game :name ?gameName .
+}
+--------------------------------------------------------------------------------------
+
+PREFIX : <http://www.di.uminho.pt/rpcw2026/PG61524/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+# 13. Quais os prémios ganhos por um determinado jogo? (Arbitrado: Catan)
+SELECT ?awardName ?year WHERE {
+    ?game :name "Catan" .
+    ?award :wonByGame ?game .
+    ?award :name ?awardName .
+    ?award :year ?year .
+}
+--------------------------------------------------------------------------------------
+
+PREFIX : <http://www.di.uminho.pt/rpcw2026/PG61524/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+# 14. Que jogos pertencem à categoria Family?
+SELECT ?gameName WHERE {
+    ?game :category "Family" .
+    ?game :name ?gameName .
+}
+--------------------------------------------------------------------------------------
+
+PREFIX : <http://www.di.uminho.pt/rpcw2026/PG61524/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+# 15. Que jogos demoram mais de 60 minutos a jogar (playingTimeMinutes)?
+SELECT ?gameName ?time WHERE {
+    ?game :playingTimeMinutes ?time .
+    FILTER(?time > 60)
+    ?game :name ?gameName .
+}
+--------------------------------------------------------------------------------------
+
+PREFIX : <http://www.di.uminho.pt/rpcw2026/PG61524/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+# 16. Em que jogos entra a mecânica Dice Rolling?
+# Nota: Esta query usa a relação estrutural original (usedInGame) presente no dataset das mecânicas.
+SELECT ?gameName WHERE {
+    ?mechanic :name "Dice Rolling" .
+    ?mechanic :usedInGame ?game .
+    ?game :name ?gameName .
+}
+--------------------------------------------------------------------------------------
+
+PREFIX : <http://www.di.uminho.pt/rpcw2026/PG61524/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+# 17. Qual a distribuição de jogos por editora, ordenada descendentemente pela quantidade de jogos?
+SELECT ?Editora (COUNT(?game) AS ?numJogos) WHERE {
+    ?publisher :publishedGame ?game .
+    ?publisher :name ?Editora .
+}
+GROUP BY ?Editora
+ORDER BY DESC(?numJogos)
+--------------------------------------------------------------------------------------
+
+PREFIX : <http://www.di.uminho.pt/rpcw2026/PG61524/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+# 18. Qual a distribuição de jogos por categoria?
+SELECT ?Categoria (COUNT(?game) AS ?numJogos) WHERE {
+    ?game :category ?Categoria .
+}
+GROUP BY ?Categoria
+ORDER BY DESC(?numJogos)
+--------------------------------------------------------------------------------------
+
+PREFIX : <http://www.di.uminho.pt/rpcw2026/PG61524/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+# 19. Quais os jogos com mecânicas mais complexas? (Jogos com mais de 3 mecânicas associadas)
+# Nota: Usamos HAVING para filtrar agregações e GROUP_CONCAT para listar todas as mecânicas na mesma linha.
+SELECT ?id ?nome (GROUP_CONCAT(?mechanicName; separator=", ") AS ?listaMecanicas) WHERE {
+    ?mechanic :usedInGame ?game .
+    ?mechanic :name ?mechanicName .
+    ?game :id ?id .
+    ?game :name ?nome .
+}
+GROUP BY ?id ?nome
+HAVING (COUNT(?mechanic) > 3)
+--------------------------------------------------------------------------------------
+
+PREFIX : <http://www.di.uminho.pt/rpcw2026/PG61524/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+# 20. Planeamento do evento da ludoteca escolar: autores e mecânicas exclusivos da categoria "Family"
+# As mecânicas aparecem agrupadas por jogo e autor, separadas por vírgulas.
+SELECT ?nomeJogo ?nomeCriador (GROUP_CONCAT(?nomeMecanica; separator=", ") AS ?listaMecanicas) WHERE {
+    ?game :category "Family" .
+    ?game :name ?nomeJogo .
+    
+    # Cruzar com os autores
+    ?author :designedGame ?game .
+    ?author :name ?nomeCriador .
+    
+    # Cruzar com as mecânicas
+    ?mechanic :usedInGame ?game .
+    ?mechanic :name ?nomeMecanica .
+}
+GROUP BY ?nomeJogo ?nomeCriador
+ORDER BY ?nomeJogo ?nomeCriador
+--------------------------------------------------------------------------------------
+
+PREFIX : <http://www.di.uminho.pt/rpcw2026/PG61524/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+# 22. Relação: isPublishedBy (Jogo -> Editora) 
+
+# Query CONSTRUCT para calcular os novos triplos de publicação inversa
+CONSTRUCT {
+    ?game :isPublishedBy ?publisher .
+} WHERE {
+    ?publisher :publishedGame ?game .
+}
+
+# Query INSERT para acrescentar definitivamente os triplos à ontologia
+INSERT {
+    ?game :isPublishedBy ?publisher .
+} WHERE {
+    ?publisher :publishedGame ?game .
+}
+
+--------------------------------------------------------------------------------------
+
+PREFIX : <http://www.di.uminho.pt/rpcw2026/PG61524/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+# 24. Relação: hasMechanic (Jogo -> Mecânica)
+
+# Query CONSTRUCT para calcular os novos triplos de mecânica inversa
+CONSTRUCT {
+    ?game :hasMechanic ?mechanic .
+} WHERE {
+    ?mechanic :usedInGame ?game .
+}
+
+PREFIX : <http://www.di.uminho.pt/rpcw2026/PG61524/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+# Query INSERT para acrescentar definitivamente os triplos à ontologia
+INSERT {
+    ?game :hasMechanic ?mechanic .
+} WHERE {
+    ?mechanic :usedInGame ?game .
+}

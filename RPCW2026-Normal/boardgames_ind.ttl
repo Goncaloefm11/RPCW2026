@@ -1,0 +1,835 @@
+@prefix agg: <http://jena.apache.org/ARQ/function/aggregate#> .
+@prefix : <http://www.di.uminho.pt/rpcw2026/PG61524/> .
+@prefix sail: <http://www.openrdf.org/config/sail#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix geof: <http://www.opengis.net/def/function/geosparql/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix fn: <http://www.w3.org/2005/xpath-functions> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix spif: <http://spinrdf.org/spif#> .
+@prefix path: <http://www.ontotext.com/path#> .
+@prefix array: <http://www.w3.org/2005/xpath-functions/array> .
+@prefix apf: <http://jena.apache.org/ARQ/property#> .
+@prefix rep: <http://www.openrdf.org/config/repository#> .
+@prefix map: <http://www.w3.org/2005/xpath-functions/map> .
+@prefix sr: <http://www.openrdf.org/config/repository/sail#> .
+@prefix wgs: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix gn: <http://www.geonames.org/ontology#> .
+@prefix afn: <http://jena.apache.org/ARQ/function#> .
+@prefix list: <http://jena.apache.org/ARQ/list#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix ofn: <http://www.ontotext.com/sparql/functions/> .
+@prefix geoext: <http://rdf.useekm.com/ext#> .
+@prefix graphdb: <http://www.ontotext.com/config/graphdb#> .
+@prefix math: <http://www.w3.org/2005/xpath-functions/math> .
+@prefix omgeo: <http://www.ontotext.com/owlim/geo#> .
+
+<http://www.di.uminho.pt/rpcw2026/PG61524> a owl:Ontology .
+
+:alan-r-moon a :Designer, owl:NamedIndividual;
+  :designedGame :ticket-to-ride;
+  :id "alan-r-moon";
+  :name "Alan R. Moon" .
+
+:Designer a owl:Class .
+
+:designedGame a owl:ObjectProperty;
+  rdfs:domain :Designer;
+  rdfs:range :Game .
+
+:ticket-to-ride a owl:NamedIndividual, :Game;
+  :id "ticket-to-ride";
+  :name "Ticket to Ride";
+  :category "Family";
+  :descriptionEN "Players collect cards of various types of train cars they then use to claim railway routes in North America.";
+  :hasMechanic :hand-management, :route-building, :set-collection;
+  :maxPlayers 5;
+  :minPlayers 2;
+  :playingTimeMinutes 60;
+  :isPublishedBy :days-of-wonder .
+
+:id a owl:DatatypeProperty;
+  rdfs:range xsd:string .
+
+:name a owl:DatatypeProperty;
+  rdfs:range xsd:string .
+
+:andreas-seyfarth a :Designer, owl:NamedIndividual;
+  :designedGame :puerto-rico;
+  :id "andreas-seyfarth";
+  :name "Andreas Seyfarth" .
+
+:puerto-rico a owl:NamedIndividual, :Game;
+  :id "puerto-rico";
+  :name "Puerto Rico";
+  :category "Strategy";
+  :descriptionEN "Ship goods, construct buildings, and choose roles to become the most prosperous in Puerto Rico.";
+  :maxPlayers 5;
+  :minPlayers 3;
+  :playingTimeMinutes 150;
+  :isPublishedBy :ravensburger .
+
+:antoine-bauza a :Designer, owl:NamedIndividual;
+  :designedGame :7-wonders;
+  :id "antoine-bauza";
+  :name "Antoine Bauza" .
+
+:7-wonders a owl:NamedIndividual, :Game;
+  :id "7-wonders";
+  :name "7 Wonders";
+  :category "Strategy";
+  :descriptionEN "Draft cards to develop your ancient civilization and build its Wonder of the World.";
+  :hasMechanic :card-drafting;
+  :maxPlayers 7;
+  :minPlayers 2;
+  :playingTimeMinutes 30;
+  :isPublishedBy :repos-production .
+
+:area-majority a owl:NamedIndividual, :Mechanic;
+  :id "area-majority";
+  :name "Area Majority / Influence";
+  :usedInGame :blood-rage, :carcassonne, :root, :scythe, :twilight-imperium-4 .
+
+:Mechanic a owl:Class .
+
+:usedInGame a owl:ObjectProperty;
+  rdfs:domain :Mechanic;
+  rdfs:range :Game .
+
+:blood-rage a owl:NamedIndividual, :Game;
+  :id "blood-rage";
+  :name "Blood Rage";
+  :category "Strategy";
+  :descriptionEN "RagnarÃ¶k has come! Draft cards, lead your Viking clan to glory, and die in battle.";
+  :hasMechanic :area-majority, :card-drafting, :variable-player-powers;
+  :maxPlayers 4;
+  :minPlayers 2;
+  :playingTimeMinutes 90;
+  :isPublishedBy :cmon .
+
+:carcassonne a owl:NamedIndividual, :Game;
+  :id "carcassonne";
+  :name "Carcassonne";
+  :category "Family";
+  :descriptionEN "Players draw and place a tile with a piece of southern French landscape on it.";
+  :hasMechanic :area-majority, :tile-placement;
+  :maxPlayers 5;
+  :minPlayers 2;
+  :playingTimeMinutes 45;
+  :isPublishedBy :hans-im-gluck .
+
+:root a owl:NamedIndividual, :Game;
+  :id "root";
+  :name "Root";
+  :category "Strategy";
+  :descriptionEN "A game of woodland might and right, with highly asymmetric factions.";
+  :hasMechanic :area-majority, :variable-player-powers;
+  :maxPlayers 4;
+  :minPlayers 2;
+  :playingTimeMinutes 90;
+  :isPublishedBy :leder-games .
+
+:scythe a owl:NamedIndividual, :Game;
+  :id "scythe";
+  :name "Scythe";
+  :category "Strategy";
+  :descriptionEN "An engine-building, asymmetric, competitive board game set in an alternate-history 1920s period.";
+  :hasMechanic :area-majority, :engine-building, :grid-movement, :variable-player-powers;
+  :maxPlayers 5;
+  :minPlayers 1;
+  :playingTimeMinutes 115;
+  :isPublishedBy :stonemaier-games .
+
+:twilight-imperium-4 a owl:NamedIndividual, :Game;
+  :id "twilight-imperium-4";
+  :name "Twilight Imperium: Fourth Edition";
+  :category "Strategy";
+  :descriptionEN "Build an empire through trade, politics, and warfare in a galaxy-spanning space opera.";
+  :hasMechanic :area-majority, :variable-player-powers;
+  :maxPlayers 6;
+  :minPlayers 3;
+  :playingTimeMinutes 480;
+  :isPublishedBy :fantasy-flight-games .
+
+:card-drafting a owl:NamedIndividual, :Mechanic;
+  :id "card-drafting";
+  :name "Card Drafting";
+  :usedInGame :7-wonders, :blood-rage, :wingspan .
+
+:wingspan a owl:NamedIndividual, :Game;
+  :id "wingspan";
+  :name "Wingspan";
+  :category "Strategy";
+  :descriptionEN "Attract a beautiful and diverse collection of birds to your wildlife preserve.";
+  :hasMechanic :card-drafting, :set-collection;
+  :maxPlayers 5;
+  :minPlayers 1;
+  :playingTimeMinutes 70;
+  :isPublishedBy :stonemaier-games .
+
+:category a owl:DatatypeProperty;
+  rdfs:domain :Game;
+  rdfs:range xsd:string .
+
+:Game a owl:Class .
+
+:cephalofair a owl:NamedIndividual, :Publisher;
+  :id "cephalofair";
+  :name "Cephalofair Games";
+  :country "USA";
+  :publishedGame :gloomhaven .
+
+:Publisher a owl:Class .
+
+:country a owl:DatatypeProperty;
+  rdfs:domain :Publisher;
+  rdfs:range xsd:string .
+
+:publishedGame a owl:ObjectProperty;
+  rdfs:domain :Publisher;
+  rdfs:range :Game .
+
+:gloomhaven a owl:NamedIndividual, :Game;
+  :id "gloomhaven";
+  :name "Gloomhaven";
+  :category "Strategy";
+  :descriptionEN "A cooperative game of tactical combat in a unique, evolving fantasy world.";
+  :hasMechanic :cooperative-game, :grid-movement, :hand-management, :variable-player-powers;
+  :maxPlayers 4;
+  :minPlayers 1;
+  :playingTimeMinutes 120;
+  :isPublishedBy :cephalofair .
+
+:christian-t-petersen a :Designer, owl:NamedIndividual;
+  :designedGame :twilight-imperium-4;
+  :id "christian-t-petersen";
+  :name "Christian T. Petersen" .
+
+:cmon a owl:NamedIndividual, :Publisher;
+  :id "cmon";
+  :name "CMON";
+  :country "Singapore";
+  :publishedGame :blood-rage .
+
+:cole-wehrle a :Designer, owl:NamedIndividual;
+  :designedGame :root;
+  :id "cole-wehrle";
+  :name "Cole Wehrle" .
+
+:cooperative-game a owl:NamedIndividual, :Mechanic;
+  :id "cooperative-game";
+  :name "Cooperative Game";
+  :usedInGame :gloomhaven, :pandemic, :spirit-island .
+
+:pandemic a owl:NamedIndividual, :Game;
+  :id "pandemic";
+  :name "Pandemic";
+  :category "Family";
+  :descriptionEN "Your team of experts must prevent the world from succumbing to a viral pandemic.";
+  :hasMechanic :cooperative-game, :set-collection, :variable-player-powers;
+  :maxPlayers 4;
+  :minPlayers 2;
+  :playingTimeMinutes 45;
+  :isPublishedBy :z-man-games .
+
+:spirit-island a owl:NamedIndividual, :Game;
+  :id "spirit-island";
+  :name "Spirit Island";
+  :category "Strategy";
+  :descriptionEN "Island Spirits join forces to defend their home from colonizing Invaders.";
+  :hasMechanic :cooperative-game, :variable-player-powers;
+  :maxPlayers 4;
+  :minPlayers 1;
+  :playingTimeMinutes 120;
+  :isPublishedBy :greater-than-games .
+
+:czech-games-edition a owl:NamedIndividual, :Publisher;
+  :id "czech-games-edition";
+  :name "Czech Games Edition";
+  :country "Czech Republic";
+  :publishedGame :codenames, :lost-ruins-of-arnak .
+
+:codenames a owl:NamedIndividual, :Game;
+  :id "codenames";
+  :name "Codenames";
+  :category "Party";
+  :descriptionEN "Give your team clever one-word clues to help them spot their agents in the field.";
+  :hasMechanic :push-your-luck;
+  :maxPlayers 8;
+  :minPlayers 2;
+  :playingTimeMinutes 15;
+  :isPublishedBy :czech-games-edition .
+
+:lost-ruins-of-arnak a owl:NamedIndividual, :Game;
+  :id "lost-ruins-of-arnak";
+  :name "Lost Ruins of Arnak";
+  :category "Strategy";
+  :descriptionEN "Explore a mysterious island, discover artifacts, and face formidable guardians.";
+  :hasMechanic :deck-building, :worker-placement;
+  :maxPlayers 4;
+  :minPlayers 1;
+  :playingTimeMinutes 120;
+  :isPublishedBy :czech-games-edition .
+
+:days-of-wonder a owl:NamedIndividual, :Publisher;
+  :id "days-of-wonder";
+  :name "Days of Wonder";
+  :country "France";
+  :publishedGame :ticket-to-ride .
+
+:deck-building a owl:NamedIndividual, :Mechanic;
+  :id "deck-building";
+  :name "Deck, Bag, and Pool Building";
+  :usedInGame :lost-ruins-of-arnak, :ark-nova, :dominion, :dune-imperium .
+
+:ark-nova a owl:NamedIndividual, :Game;
+  :id "ark-nova";
+  :name "Ark Nova";
+  :category "Strategy";
+  :descriptionEN "Plan and design a modern, scientifically managed zoo to support conservation projects.";
+  :hasMechanic :deck-building;
+  :maxPlayers 4;
+  :minPlayers 1;
+  :playingTimeMinutes 150;
+  :isPublishedBy :feuerland-spiele .
+
+:dominion a owl:NamedIndividual, :Game;
+  :id "dominion";
+  :name "Dominion";
+  :category "Strategy";
+  :descriptionEN "Acquire lands, hire subjects, and build the ultimate deck to rule your kingdom.";
+  :hasMechanic :deck-building;
+  :maxPlayers 4;
+  :minPlayers 2;
+  :playingTimeMinutes 30;
+  :isPublishedBy :rio-grande-games .
+
+:dune-imperium a owl:NamedIndividual, :Game;
+  :id "dune-imperium";
+  :name "Dune: Imperium";
+  :category "Strategy";
+  :descriptionEN "Influence, intrigue, and combat in the universe of Dune using deck-building and worker placement.";
+  :hasMechanic :deck-building, :worker-placement;
+  :maxPlayers 4;
+  :minPlayers 1;
+  :playingTimeMinutes 120;
+  :isPublishedBy :dire-wolf .
+
+:descriptionEN a owl:DatatypeProperty;
+  rdfs:domain :Game;
+  rdfs:range xsd:string .
+
+:dice-rolling a owl:NamedIndividual, :Mechanic;
+  :id "dice-rolling";
+  :name "Dice Rolling";
+  :usedInGame :castles-of-burgundy, :catan, :king-of-tokyo .
+
+:castles-of-burgundy a owl:NamedIndividual, :Game;
+  :id "castles-of-burgundy";
+  :name "The Castles of Burgundy";
+  :category "Strategy";
+  :descriptionEN "Plan, trade, and build your Burgundian estate to prosperity and prominence.";
+  :hasMechanic :dice-rolling, :tile-placement;
+  :maxPlayers 4;
+  :minPlayers 2;
+  :playingTimeMinutes 90;
+  :isPublishedBy :ravensburger .
+
+:catan a owl:NamedIndividual, :Game;
+  :id "catan";
+  :name "Catan";
+  :category "Family";
+  :descriptionEN "Players take on the roles of settlers, each attempting to build and develop holdings while trading and acquiring resources.";
+  :hasMechanic :dice-rolling, :route-building, :tile-placement;
+  :maxPlayers 4;
+  :minPlayers 3;
+  :playingTimeMinutes 120;
+  :isPublishedBy :kosmos .
+
+:king-of-tokyo a owl:NamedIndividual, :Game;
+  :id "king-of-tokyo";
+  :name "King of Tokyo";
+  :category "Party";
+  :descriptionEN "Mutant monsters, gigantic robots, and fierce aliens battle for control of Tokyo.";
+  :hasMechanic :dice-rolling, :push-your-luck;
+  :maxPlayers 6;
+  :minPlayers 2;
+  :playingTimeMinutes 30;
+  :isPublishedBy :iello .
+
+:dire-wolf a owl:NamedIndividual, :Publisher;
+  :id "dire-wolf";
+  :name "Dire Wolf";
+  :country "USA";
+  :publishedGame :dune-imperium .
+
+:donald-x-vaccarino a :Designer, owl:NamedIndividual;
+  :designedGame :dominion;
+  :id "donald-x-vaccarino";
+  :name "Donald X. Vaccarino" .
+
+:dsp-2011 a owl:NamedIndividual, :Award;
+  :id "dsp-2011";
+  :name "Deutscher Spiele Preis";
+  :wonByGame :7-wonders;
+  :year 2011 .
+
+:Award a owl:Class .
+
+:wonByGame a owl:ObjectProperty;
+  rdfs:domain :Award;
+  rdfs:range :Game .
+
+:year a owl:DatatypeProperty;
+  rdfs:domain :Award;
+  rdfs:range xsd:integer .
+
+:dsp-2017 a owl:NamedIndividual, :Award;
+  :id "dsp-2017";
+  :name "Deutscher Spiele Preis";
+  :wonByGame :terraforming-mars;
+  :year 2017 .
+
+:terraforming-mars a owl:NamedIndividual, :Game;
+  :id "terraforming-mars";
+  :name "Terraforming Mars";
+  :category "Strategy";
+  :descriptionEN "Players control corporations and buy and play cards to terraform the planet Mars.";
+  :hasMechanic :engine-building, :hand-management, :set-collection, :tile-placement,
+    :variable-player-powers;
+  :maxPlayers 5;
+  :minPlayers 1;
+  :playingTimeMinutes 120;
+  :isPublishedBy :fryxgames .
+
+:dsp-2022 a owl:NamedIndividual, :Award;
+  :id "dsp-2022";
+  :name "Deutscher Spiele Preis";
+  :wonByGame :ark-nova;
+  :year 2022 .
+
+:elizabeth-hargrave a :Designer, owl:NamedIndividual;
+  :designedGame :wingspan;
+  :id "elizabeth-hargrave";
+  :name "Elizabeth Hargrave" .
+
+:engine-building a owl:NamedIndividual, :Mechanic;
+  :id "engine-building";
+  :name "Engine Building";
+  :usedInGame :scythe, :terraforming-mars .
+
+:eric-m-lang a :Designer, owl:NamedIndividual;
+  :designedGame :blood-rage;
+  :id "eric-m-lang";
+  :name "Eric M. Lang" .
+
+:fantasy-flight-games a owl:NamedIndividual, :Publisher;
+  :id "fantasy-flight-games";
+  :name "Fantasy Flight Games";
+  :country "USA";
+  :publishedGame :twilight-imperium-4 .
+
+:feuerland-spiele a owl:NamedIndividual, :Publisher;
+  :id "feuerland-spiele";
+  :name "Feuerland Spiele";
+  :country "Germany";
+  :publishedGame :ark-nova .
+
+:flatout-games a owl:NamedIndividual, :Publisher;
+  :id "flatout-games";
+  :name "Flatout Games";
+  :country "USA";
+  :publishedGame :cascadia .
+
+:cascadia a owl:NamedIndividual, :Game;
+  :id "cascadia";
+  :name "Cascadia";
+  :category "Family";
+  :descriptionEN "Create the most harmonious ecosystem as you draft habitats and wildlife.";
+  :hasMechanic :tile-placement;
+  :maxPlayers 4;
+  :minPlayers 1;
+  :playingTimeMinutes 45;
+  :isPublishedBy :flatout-games .
+
+:fryxgames a owl:NamedIndividual, :Publisher;
+  :id "fryxgames";
+  :name "FryxGames";
+  :country "Sweden";
+  :publishedGame :terraforming-mars .
+
+:gg-2013 a owl:NamedIndividual, :Award;
+  :id "gg-2013";
+  :name "Golden Geek Board Game of the Year";
+  :wonByGame :pandemic;
+  :year 2013 .
+
+:gg-2016 a owl:NamedIndividual, :Award;
+  :id "gg-2016";
+  :name "Golden Geek Board Game of the Year";
+  :wonByGame :scythe;
+  :year 2016 .
+
+:gg-2017 a owl:NamedIndividual, :Award;
+  :id "gg-2017";
+  :name "Golden Geek Board Game of the Year";
+  :wonByGame :gloomhaven;
+  :year 2017 .
+
+:gg-2018 a owl:NamedIndividual, :Award;
+  :id "gg-2018";
+  :name "Golden Geek Board Game of the Year";
+  :wonByGame :root;
+  :year 2018 .
+
+:greater-than-games a owl:NamedIndividual, :Publisher;
+  :id "greater-than-games";
+  :name "Greater Than Games";
+  :country "USA";
+  :publishedGame :spirit-island .
+
+:grid-movement a owl:NamedIndividual, :Mechanic;
+  :id "grid-movement";
+  :name "Grid Movement";
+  :usedInGame :scythe, :gloomhaven .
+
+:hand-management a owl:NamedIndividual, :Mechanic;
+  :id "hand-management";
+  :name "Hand Management";
+  :usedInGame :ticket-to-ride, :gloomhaven, :terraforming-mars .
+
+:hans-im-gluck a owl:NamedIndividual, :Publisher;
+  :id "hans-im-gluck";
+  :name "Hans im GlÃ¼ck";
+  :country "Germany";
+  :publishedGame :carcassonne .
+
+:hasMechanic a owl:ObjectProperty;
+  rdfs:domain :Game;
+  rdfs:range :Mechanic .
+
+:iello a owl:NamedIndividual, :Publisher;
+  :id "iello";
+  :name "IELLO";
+  :country "France";
+  :publishedGame :king-of-tokyo .
+
+:isaac-childres a :Designer, owl:NamedIndividual;
+  :designedGame :gloomhaven;
+  :id "isaac-childres";
+  :name "Isaac Childres" .
+
+:jacob-fryxelius a :Designer, owl:NamedIndividual;
+  :designedGame :terraforming-mars;
+  :id "jacob-fryxelius";
+  :name "Jacob Fryxelius" .
+
+:james-a-wilson a :Designer, owl:NamedIndividual;
+  :designedGame :everdell;
+  :id "james-a-wilson";
+  :name "James A. Wilson" .
+
+:everdell a owl:NamedIndividual, :Game;
+  :id "everdell";
+  :name "Everdell";
+  :category "Strategy";
+  :descriptionEN "A game of dynamic tableau building and worker placement in a charming forest.";
+  :hasMechanic :worker-placement;
+  :maxPlayers 4;
+  :minPlayers 1;
+  :playingTimeMinutes 80;
+  :isPublishedBy :starling-games .
+
+:jamey-stegmaier a :Designer, owl:NamedIndividual;
+  :designedGame :scythe;
+  :id "jamey-stegmaier";
+  :name "Jamey Stegmaier" .
+
+:klaus-jurgen-wrede a :Designer, owl:NamedIndividual;
+  :designedGame :carcassonne;
+  :id "klaus-jurgen-wrede";
+  :name "Klaus-JÃ¼rgen Wrede" .
+
+:klaus-teuber a :Designer, owl:NamedIndividual;
+  :designedGame :catan;
+  :id "klaus-teuber";
+  :name "Klaus Teuber" .
+
+:kosmos a owl:NamedIndividual, :Publisher;
+  :id "kosmos";
+  :name "KOSMOS";
+  :country "Germany";
+  :publishedGame :catan .
+
+:ksdj-2019 a owl:NamedIndividual, :Award;
+  :id "ksdj-2019";
+  :name "Kennerspiel des Jahres";
+  :wonByGame :wingspan;
+  :year 2019 .
+
+:leder-games a owl:NamedIndividual, :Publisher;
+  :id "leder-games";
+  :name "Leder Games";
+  :country "USA";
+  :publishedGame :root .
+
+:lookout-games a owl:NamedIndividual, :Publisher;
+  :id "lookout-games";
+  :name "Lookout Games";
+  :country "Germany";
+  :publishedGame :patchwork .
+
+:patchwork a owl:NamedIndividual, :Game;
+  :id "patchwork";
+  :name "Patchwork";
+  :category "Family";
+  :descriptionEN "Compete to build the most aesthetic (and high-scoring) patchwork quilt.";
+  :hasMechanic :tile-placement;
+  :maxPlayers 2;
+  :minPlayers 2;
+  :playingTimeMinutes 30;
+  :isPublishedBy :lookout-games .
+
+:marc-andre a :Designer, owl:NamedIndividual;
+  :designedGame :splendor;
+  :id "marc-andre";
+  :name "Marc AndrÃ©" .
+
+:splendor a owl:NamedIndividual, :Game;
+  :id "splendor";
+  :name "Splendor";
+  :category "Family";
+  :descriptionEN "Renaissance merchants race to grab gems, acquire property, and please nobility.";
+  :hasMechanic :set-collection;
+  :maxPlayers 4;
+  :minPlayers 2;
+  :playingTimeMinutes 30;
+  :isPublishedBy :space-cowboys .
+
+:martin-wallace a :Designer, owl:NamedIndividual;
+  :designedGame :brass-birmingham;
+  :id "martin-wallace";
+  :name "Martin Wallace" .
+
+:brass-birmingham a owl:NamedIndividual, :Game;
+  :id "brass-birmingham";
+  :name "Brass: Birmingham";
+  :category "Strategy";
+  :descriptionEN "Build networks, grow industries, and navigate the world of the Industrial Revolution.";
+  :hasMechanic :network-building;
+  :maxPlayers 4;
+  :minPlayers 2;
+  :playingTimeMinutes 120;
+  :isPublishedBy :roxley .
+
+:mathias-wigge a :Designer, owl:NamedIndividual;
+  :designedGame :ark-nova;
+  :id "mathias-wigge";
+  :name "Mathias Wigge" .
+
+:matt-leacock a :Designer, owl:NamedIndividual;
+  :designedGame :pandemic;
+  :id "matt-leacock";
+  :name "Matt Leacock" .
+
+:maxPlayers a owl:DatatypeProperty;
+  rdfs:domain :Game;
+  rdfs:range xsd:integer .
+
+:michael-kiesling a :Designer, owl:NamedIndividual;
+  :designedGame :azul;
+  :id "michael-kiesling";
+  :name "Michael Kiesling" .
+
+:azul a owl:NamedIndividual, :Game;
+  :id "azul";
+  :name "Azul";
+  :category "Family";
+  :descriptionEN "Players take turns drafting colored tiles from suppliers to their player board to score points.";
+  :hasMechanic :set-collection, :tile-placement;
+  :maxPlayers 4;
+  :minPlayers 2;
+  :playingTimeMinutes 45;
+  :isPublishedBy :plan-b-games .
+
+:min-elwen a :Designer, owl:NamedIndividual;
+  :designedGame :lost-ruins-of-arnak;
+  :id "min-elwen";
+  :name "Min & Elwen" .
+
+:minPlayers a owl:DatatypeProperty;
+  rdfs:domain :Game;
+  rdfs:range xsd:integer .
+
+:network-building a owl:NamedIndividual, :Mechanic;
+  :id "network-building";
+  :name "Network and Route Building";
+  :usedInGame :brass-birmingham .
+
+:paul-dennen a :Designer, owl:NamedIndividual;
+  :designedGame :dune-imperium;
+  :id "paul-dennen";
+  :name "Paul Dennen" .
+
+:plan-b-games a owl:NamedIndividual, :Publisher;
+  :id "plan-b-games";
+  :name "Plan B Games";
+  :country "Canada";
+  :publishedGame :azul .
+
+:playingTimeMinutes a owl:DatatypeProperty;
+  rdfs:domain :Game;
+  rdfs:range xsd:integer .
+
+:push-your-luck a owl:NamedIndividual, :Mechanic;
+  :id "push-your-luck";
+  :name "Push Your Luck";
+  :usedInGame :codenames, :king-of-tokyo .
+
+:r-eric-reuss a :Designer, owl:NamedIndividual;
+  :designedGame :spirit-island;
+  :id "r-eric-reuss";
+  :name "R. Eric Reuss" .
+
+:randy-flynn a :Designer, owl:NamedIndividual;
+  :designedGame :cascadia;
+  :id "randy-flynn";
+  :name "Randy Flynn" .
+
+:ravensburger a owl:NamedIndividual, :Publisher;
+  :id "ravensburger";
+  :name "Ravensburger";
+  :country "Germany";
+  :publishedGame :puerto-rico, :castles-of-burgundy .
+
+:repos-production a owl:NamedIndividual, :Publisher;
+  :id "repos-production";
+  :name "Repos Production";
+  :country "Belgium";
+  :publishedGame :7-wonders .
+
+:richard-garfield a :Designer, owl:NamedIndividual;
+  :designedGame :king-of-tokyo;
+  :id "richard-garfield";
+  :name "Richard Garfield" .
+
+:rio-grande-games a owl:NamedIndividual, :Publisher;
+  :id "rio-grande-games";
+  :name "Rio Grande Games";
+  :country "USA";
+  :publishedGame :dominion .
+
+:route-building a owl:NamedIndividual, :Mechanic;
+  :id "route-building";
+  :name "Route Building";
+  :usedInGame :ticket-to-ride, :catan .
+
+:roxley a owl:NamedIndividual, :Publisher;
+  :id "roxley";
+  :name "Roxley";
+  :country "Canada";
+  :publishedGame :brass-birmingham .
+
+:sdj-1995 a owl:NamedIndividual, :Award;
+  :id "sdj-1995";
+  :name "Spiel des Jahres";
+  :wonByGame :catan;
+  :year 1995 .
+
+:sdj-2001 a owl:NamedIndividual, :Award;
+  :id "sdj-2001";
+  :name "Spiel des Jahres";
+  :wonByGame :carcassonne;
+  :year 2001 .
+
+:sdj-2004 a owl:NamedIndividual, :Award;
+  :id "sdj-2004";
+  :name "Spiel des Jahres";
+  :wonByGame :ticket-to-ride;
+  :year 2004 .
+
+:sdj-2009 a owl:NamedIndividual, :Award;
+  :id "sdj-2009";
+  :name "Spiel des Jahres";
+  :wonByGame :dominion;
+  :year 2009 .
+
+:sdj-2016 a owl:NamedIndividual, :Award;
+  :id "sdj-2016";
+  :name "Spiel des Jahres";
+  :wonByGame :codenames;
+  :year 2016 .
+
+:sdj-2018 a owl:NamedIndividual, :Award;
+  :id "sdj-2018";
+  :name "Spiel des Jahres";
+  :wonByGame :azul;
+  :year 2018 .
+
+:sdj-2022 a owl:NamedIndividual, :Award;
+  :id "sdj-2022";
+  :name "Spiel des Jahres";
+  :wonByGame :cascadia;
+  :year 2022 .
+
+:set-collection a owl:NamedIndividual, :Mechanic;
+  :id "set-collection";
+  :name "Set Collection";
+  :usedInGame :ticket-to-ride, :wingspan, :pandemic, :terraforming-mars, :splendor,
+    :azul .
+
+:space-cowboys a owl:NamedIndividual, :Publisher;
+  :id "space-cowboys";
+  :name "Space Cowboys";
+  :country "France";
+  :publishedGame :splendor .
+
+:starling-games a owl:NamedIndividual, :Publisher;
+  :id "starling-games";
+  :name "Starling Games";
+  :country "USA";
+  :publishedGame :everdell .
+
+:stefan-feld a :Designer, owl:NamedIndividual;
+  :designedGame :castles-of-burgundy;
+  :id "stefan-feld";
+  :name "Stefan Feld" .
+
+:stonemaier-games a owl:NamedIndividual, :Publisher;
+  :id "stonemaier-games";
+  :name "Stonemaier Games";
+  :country "USA";
+  :publishedGame :scythe, :wingspan .
+
+:tile-placement a owl:NamedIndividual, :Mechanic;
+  :id "tile-placement";
+  :name "Tile Placement";
+  :usedInGame :carcassonne, :castles-of-burgundy, :catan, :terraforming-mars, :cascadia,
+    :patchwork, :azul .
+
+:uwe-rosenberg a :Designer, owl:NamedIndividual;
+  :designedGame :patchwork;
+  :id "uwe-rosenberg";
+  :name "Uwe Rosenberg" .
+
+:variable-player-powers a owl:NamedIndividual, :Mechanic;
+  :id "variable-player-powers";
+  :name "Variable Player Powers";
+  :usedInGame :blood-rage, :root, :scythe, :twilight-imperium-4, :gloomhaven, :pandemic,
+    :spirit-island, :terraforming-mars .
+
+:vlaada-chvatil a :Designer, owl:NamedIndividual;
+  :designedGame :codenames;
+  :id "vlaada-chvatil";
+  :name "Vlaada ChvÃ¡til" .
+
+:worker-placement a owl:NamedIndividual, :Mechanic;
+  :id "worker-placement";
+  :name "Worker Placement";
+  :usedInGame :lost-ruins-of-arnak, :dune-imperium, :everdell .
+
+:z-man-games a owl:NamedIndividual, :Publisher;
+  :id "z-man-games";
+  :name "Z-Man Games";
+  :country "USA";
+  :publishedGame :pandemic .

@@ -1,0 +1,54 @@
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX : <http://www.di.uminho.pt/rpcw2026/fabula/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+# 1. Quais são as personagens presentes na história e a que espécie animal pertencem?
+SELECT ?nomePersonagem ?especie WHERE {
+    ?p rdf:type :Animal .
+    ?p :nome ?nomePersonagem .
+    ?p rdf:type ?especieClass .
+    FILTER(?especieClass != :Animal && ?especieClass != owl:NamedIndividual)
+    BIND(STRAFTER(STR(?especieClass), "fabula/") AS ?especie)
+}
+--------------------------------------------------------------------------------------
+
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX : <http://www.di.uminho.pt/rpcw2026/fabula/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+# 2. Que objeto possuía o Corvo no início da história e onde ele estava localizado?
+SELECT ?nomeObjeto ?nomeLocal WHERE {
+    :mestre_corvo :possui ?objeto .
+    ?objeto :nome ?nomeObjeto .
+    ?objeto :estaLocalizadoEm ?local .
+    ?local :nome ?nomeLocal .
+}
+--------------------------------------------------------------------------------------
+
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX : <http://www.di.uminho.pt/rpcw2026/fabula/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+# 3. Quais são as características ou sentimentos associados à personagem "Raposa"?
+SELECT ?tipo ?nomeAtributo WHERE {
+    {
+        :mestre_raposa :temCaracteristica ?c .
+        ?c :nome ?nomeAtributo .
+        BIND("Caracteristica" AS ?tipo)
+    } UNION {
+        :mestre_raposa :sente ?s .
+        ?s :nome ?nomeAtributo .
+        BIND("Sentimento" AS ?tipo)
+    }
+}
+--------------------------------------------------------------------------------------
+
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX : <http://www.di.uminho.pt/rpcw2026/fabula/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+# 4. Que personagem enganou o Corvo?
+SELECT ?nomeEnganador WHERE {
+    ?enganador :enganou :mestre_corvo .
+    ?enganador :nome ?nomeEnganador .
+}
