@@ -9,49 +9,51 @@
 
 ## Descrição do Trabalho
 
-O exame prático divide-se em duas partes fundamentais, focadas na modelação de ontologias em OWL e na posterior consulta e enriquecimento de dados via SPARQL.
+O exame prático foca-se na modelação de ontologias em OWL, povoamento de dados e posterior consulta e enriquecimento de grafos via SPARQL, dividindo-se em duas partes:
 
-### Exercício 1: A Fábula
-Modelação da história do Mestre Corvo e da Mestre Raposa. A ontologia estrutural foi construída e povoada diretamente em sintaxe Turtle no ficheiro `fabula.ttl`, mapeando as classes de personagens, animais, sentimentos, localizações e as suas interações (como o ato de enganar e a posse do queijo).
-
-### Exercício 2: Jogos de Tabuleiro Modernos
-Desenvolvimento de uma infraestrutura semântica escalável para o ecossistema de jogos de tabuleiro. O trabalho assentou no IRI dinâmico exigido no enunciado: `http://www.di.uminho.pt/rpcw2026/PG61524/`.
+1. **Exercício 1 (A Fábula):** Modelação da história do Mestre Corvo e da Mestre Raposa. Mapeia as classes de personagens, animais, sentimentos, localizações e as suas interações diretas (posse do queijo e o ato de enganar).
+2. **Exercício 2 (Jogos de Tabuleiro Modernos):** Desenvolvimento de uma infraestrutura semântica escalável sob o IRI dinâmico exigido: `http://www.di.uminho.pt/rpcw2026/PG61524/`.
 
 ---
 
-## Metodologia de Migração e Povoamento (Exercício 2)
+## Organização do Projeto
 
-O processo de povoamento dos indivíduos foi completamente automatizado através de um **script em Python**, garantindo a integridade referencial e a rapidez na transição dos dados fornecidos em formato JSON.
+O repositório encontra-se estruturado com os seguintes ficheiros:
 
-### O Script de Automação (`povoar_boardgames.py`)
-O script utiliza a biblioteca `rdflib` e atua de acordo com o seguinte fluxo lógico:
-1. **Carregamento Estrutural:** Lê e interpreta a ontologia esqueleto a partir do ficheiro `boardgames_base.ttl`.
-2. **Parseamento de Datasets:** Processa sequencialmente os ficheiros JSON fornecidos: `jogos.json`, `autores.json`, `editoras.json`, `mecanicas.json` e `premios.json`.
-3. **Resolução de Integridade Lógica:** Foi desenhado com uma função de segurança (`criar_no_seguro`) que valida se um recurso referenciado (ex: um jogo associado a uma mecânica ou prémio) já existe no grafo. Caso não exista no ficheiro principal, o indivíduo é instanciado automaticamente com a sua classe respetiva, prevenindo falhas de integridade referencial nas propriedades de objeto.
-4. **Serialização:** Exporta o grafo consolidado em formato Turtle para o ficheiro `boardgames_ind.ttl`.
+* `fabula.ttl` — Ontologia conceptual e população de indivíduos da fábula (Exercício 1).
+* `queries.txt` — Ficheiro de texto contendo todas as consultas SPARQL desenvolvidas para o Exercício 1.
+* `boardgames_base.ttl` — Vocabulário base contendo as classes, atributos e object properties construídas para o Exercício 2.
+* `povoar_boardgames.py` — Script de automação em Python para o processamento e mapeamento inicial dos dados.
+* `autores.json`, `editoras.json`, `jogos.json`, `mecanicas.json`, `premios.json` — Conjuntos de informação fornecidos que serviram como ponto de partida.
+* `boardgames_ind.ttl` — Grafo de conhecimento povoado final **já maximizado**. *Nota: Este ficheiro foi exportado diretamente do GraphDB após a execução bem-sucedida das queries de mutação, contendo todas as relações inferidas de forma estática.*
+* `sparql.txt` — Ficheiro de texto contendo as consultas analíticas, agregadas e de inferência desenvolvidas para o Exercício 2.
 
 ---
 
-## Inferência de Novo Conhecimento
+## Metodologia de Migração e Inferência (Exercício 2)
 
-A instanciação das propriedades inversas pedidas foi executada diretamente na base de dados gráfica, tirando partido do motor de inferência SPARQL:
+### Povoamento Inicial Automático
+Para o processamento dos datasets JSON, utilizou-se o script Python (`povoar_boardgames.py`) suportado pela biblioteca `rdflib`. O script foi desenhado com uma função de segurança (`criar_no_seguro`) que valida se um recurso referenciado de forma cruzada (ex: um jogo associado a um prémio ou mecânica) já se encontra instanciado no grafo. Caso não exista, o indivíduo é criado automaticamente na sua classe correspondente, blindando a ontologia contra falhas de integridade referencial.
+
+### Enriquecimento Semântico por Inferência
+A instanciação das propriedades inversas pedidas no enunciado foi executada na base de dados gráfica através do motor SPARQL Update:
 * **Relações Geradas:** `:isPublishedBy` (inversa de `:publishedGame`) e `:hasMechanic` (inversa de `:usedInGame`).
-* **Execução:** Foram aplicadas as queries de mutação `INSERT` na interface do GraphDB para interligar os dados de forma permanente e bidirecional na ontologia.
+* **Mecanismo:** Foram aplicadas queries `INSERT` que analisaram as conexões existentes e geraram os caminhos lógicos inversos, maximizando o grafo final.
 
 ---
 
 ## Instruções de Execução e Replicação (Correção)
 
-Para garantir que não ocorre mistura de dados ou conflitos de prefixos entre os dois domínios independentes do exame, a validação deve ser feita criando dois repositórios separados no GraphDB:
+Para garantir o isolamento dos dados e evitar conflitos de prefixos, a validação das alíneas deve ser feita através de dois repositórios independentes no GraphDB:
 
-### 1. Testar o Exercício 1 (A Fábula)
-1. No GraphDB, crie um repositório separado chamado **`fabula`**.
+### 1. Validação do Exercício 1 (A Fábula)
+1. No GraphDB, crie um repositório chamado **`fabula`**.
 2. Efetue o upload e o import do ficheiro **`fabula.ttl`**.
-3. Navegue até ao painel **SPARQL**, garanta que o repositório `fabula` está selecionado e execute as quatro primeiras queries (as referentes à Fábula) presentes no ficheiro `queries.txt`.
+3. No painel **SPARQL**, execute as consultas presentes no ficheiro **`queries.txt`**.
 
-### 2. Testar o Exercício 2 (Jogos de Tabuleiro)
-1. No GraphDB, crie um novo repositório chamado **`boardgames`**.
-2. Efetue o upload e o import do ficheiro de axiomas base **`boardgames_base.ttl`**.
+### 2. Validação do Exercício 2 (Jogos de Tabuleiro)
+1. No GraphDB, crie um repositório chamado **`boardgames`**.
+2. Efetue o upload e o import do ficheiro base **`boardgames_base.ttl`**.
 3. Efetue o upload e o import do ficheiro povoado final **`boardgames_ind.ttl`**.
-4. No painel **SPARQL** (com o repositório `boardgames` ativo), execute as queries analíticas e as de agregação listadas no ficheiro `sparql.txt`.
-5. Para materializar o conhecimento e as relações inversas, execute as queries `INSERT` presentes na secção final do ficheiro `sparql.txt`.
+4. No painel **SPARQL**, execute as consultas analíticas presentes no ficheiro **`sparql.txt`**.
+5. *(Opcional)* As queries de mutação `INSERT` utilizadas para gerar as propriedades inversas encontram-se mapeadas na secção final do ficheiro **`sparql.txt`**.
